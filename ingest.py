@@ -58,6 +58,8 @@ def _table_to_rows(tbl: Any) -> Optional[List[List[str]]]:
                 row = []
                 row_number = cell.end_row_offset_idx
             row.append(_element_text(cell.text))
+
+        rows.append(row)
         return rows
     return None
 
@@ -179,13 +181,13 @@ def main():
     parser.add_argument(
         "--input-dir",
         type=Path,
-        default=Path("documents"),
+        default=Path("trial"),
         help="Directory with input PDFs",
     )
     parser.add_argument(
         "--output-dir",
         type=Path,
-        default=Path("data/processed"),
+        default=Path("data/trial"),
         help="Directory to write JSON outputs",
     )
     args = parser.parse_args()
