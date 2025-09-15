@@ -6,7 +6,6 @@ from pathlib import Path
 from typing import List, Optional, Dict, Any
 
 from langchain_cerebras import ChatCerebras
-from langchain_google_genai import ChatGoogleGenerativeAI
 
 from langchain.agents import create_tool_calling_agent, AgentExecutor
 from langchain.tools import StructuredTool
