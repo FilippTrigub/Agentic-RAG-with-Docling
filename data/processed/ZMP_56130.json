@@ -1,0 +1,29 @@
+{
+  "source": "documents\\ZMP_56130.pdf",
+  "content": "Product features and benefits\n_ Precise filament alignment with patented quartz pinch technology\n_ OSRAM HLX lamps provide 10% higher luminous efficacy over standard halogen\n_ Instant on and nearly constant luminous flux over the life of the lamp\n_ Dimmable\nProduct datasheet\n64657 HLX\nHalogen (< 75 V) Single End | OSRAM single end low voltage halogen lamps provide high quality light to meet the high demands of the medical and scientific markets\nAreas of application\n_ Microscopy\n_ Laboratory & Analysis\n_ UV Curing\n_ Fiber Illumination\n_ Surgical & Dental Overhead\n__\nTechnical data\nGeneral Product Information\nProduct number (Americas): 54255\nProduct name (Americas): EVC 64657 HLX 250W 24V 40/CS 1/SKU\nFamily brand: XENOPHOT (HLX)\nLamp type: SINGLE END\nANSI code: EVC\nLIF code: M/33\nElectrical Data\nNominal wattage\n250 W\nNominal voltage\n24.0 V\nType of current\nAC\nPhotometric Data\nNominal luminous flux\n9000 lm\nIlluminated field\n8.0*4.0 mm²\nColor rendering index Ra\n100\nLight center length (LCL)\n33.0 mm\nLight center length (LCL) - (in)\n1.287 in\nPhysical Attributes & Dimensions\nLamp base\nG6.35\nDiameter (in)\n0.551 in\nDiameter\n13.5 mm\nLength\n55.0 mm\nProduct weight\n3.35 g\nOperating Conditions\nBurning position\ns90\nLifetime Data\nNominal lifetime\n300 hr\nEnvironmental & Regulatory Information\nInformation according Art. 33 of EU Regulation (EC) 1907/2006 (REACh)\nProduct datasheet\n__\nPrimary article identifier: 4050300012001\nDeclaration no. in SCIP database: No declarable substances contained\nCountry specific information\nProduct datasheet\n__\nSafety advice\nTo prevent personal injury or damage to property, halogen lamps may only be operated in suitable luminaires designed with suitable mechanisms (protective shields, grids, etc.) to ensure that in the event of a lamp bursting no parts/shards can escape and that during operation no ultraviolet radiation can escape. There must also be a warning sign to indicate that the lamps give off high levels of heat. Detailed information is available on request.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
+  "Product features and benefits": [
+    "_ Precise filament alignment with patented quartz pinch technology",
+    "_ OSRAM HLX lamps provide 10% higher luminous efficacy over standard halogen",
+    "_ Instant on and nearly constant luminous flux over the life of the lamp",
+    "_ Dimmable"
+  ],
+  "Areas of application": [
+    "_ Microscopy",
+    "_ Laboratory & Analysis",
+    "_ UV Curing",
+    "_ Fiber Illumination",
+    "_ Surgical & Dental Overhead"
+  ],
+  "General Product Information": {
+    "Product number (Americas)": "54255",
+    "Product name (Americas)": "EVC 64657 HLX 250W 24V 40/CS 1/SKU",
+    "Family brand": "XENOPHOT (HLX)",
+    "Lamp type": "SINGLE END",
+    "ANSI code": "EVC",
+    "LIF code": "M/33"
+  },
+  "Product datasheet": {
+    "Primary article identifier": "4050300012001",
+    "Declaration no. in SCIP database": "No declarable substances contained"
+  }
+}

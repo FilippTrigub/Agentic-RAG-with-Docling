@@ -1,0 +1,48 @@
+{
+  "source": "documents\\ZMP_4059566.pdf",
+  "content": "Product features and benefits\n_ Robust construction for reliable, lasting performance\n_ Consistent color over the life of the lamps\n_ Instant on and nearly constant luminous flux over the life of the lamp\n_ Broad product portfolio supporting the stage and studio markets\n_ Dimmable to 0% with traditional amber shift\nProduct datasheet\n64748XS 1000W 230V\nHalogen (> 130 V) Single End | Offering a broad portfolio of high quality single end halogen lamps used in the stage and studio markets\nAreas of application\n_ Stage & Theatre\n_ Studio, TV, & Film\n_ Professional Photography\n_ Club & Disco\n__\nOSRAM\nTechnical data\nGeneral Product Information\nProduct number (Americas): 55037\nProduct name (Americas): 64748 XS 1000W 230V 12/CS 1/SKU\nANSI code: -\nElectrical Data\nNominal wattage: 1000W\nPhotometric Data\nNominal luminous flux: 25000 lm\nUseful luminous flux ( Φ use): 21395 lm\nΦ use value refers to luminous flux: 360\nColor temperature: 3200 K\nCorrelated color temperature CCT: 3141 K\nChromaticity coordinate x: 0.427\nChromaticity coordinate y: 0.400\nPhysical Attributes & Dimensions\nLamp base: GY9.5\nDiameter: 22.2mm\nLength: 95.0mm\nFilament: C13-D\nOperating Conditions\nBurning position: S180\nLifetime Data\nEnvironmental & Regulatory Information\nInformation according Art. 33 of EU Regulation (EC) 1907/2006 (REACh)\nProduct datasheet\n__\nPrimary article identifier: 4052899545366\nEnergy efficiency class: G\nDeclaration no. in SCIP database: No declarable substances contained\nProduct datasheet\n__\nSafety advice\nTo prevent personal injury or damage to property, halogen lamps may only be operated in suitable luminaires designed with suitable mechanisms (protective shields, grids, etc.) to ensure that in the event of a lamp bursting no parts/shards can escape and that during operation no ultraviolet radiation can escape. There must also be a warning sign to indicate that the lamps give off high levels of heat. Detailed information is available on request.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
+  "Product features and benefits": [
+    "_ Robust construction for reliable, lasting performance",
+    "_ Consistent color over the life of the lamps",
+    "_ Instant on and nearly constant luminous flux over the life of the lamp",
+    "_ Broad product portfolio supporting the stage and studio markets",
+    "_ Dimmable to 0% with traditional amber shift"
+  ],
+  "Areas of application": [
+    "_ Stage & Theatre",
+    "_ Studio, TV, & Film",
+    "_ Professional Photography",
+    "_ Club & Disco"
+  ],
+  "General Product Information": {
+    "Product number (Americas)": "55037",
+    "Product name (Americas)": "64748 XS 1000W 230V 12/CS 1/SKU",
+    "ANSI code": "-"
+  },
+  "Electrical Data": {
+    "Nominal wattage": "1000W"
+  },
+  "Photometric Data": {
+    "Nominal luminous flux": "25000 lm",
+    "Useful luminous flux ( Φ use)": "21395 lm",
+    "Φ use value refers to luminous flux": "360",
+    "Color temperature": "3200 K",
+    "Correlated color temperature CCT": "3141 K",
+    "Chromaticity coordinate x": "0.427",
+    "Chromaticity coordinate y": "0.400"
+  },
+  "Physical Attributes & Dimensions": {
+    "Lamp base": "GY9.5",
+    "Diameter": "22.2mm",
+    "Length": "95.0mm",
+    "Filament": "C13-D"
+  },
+  "Operating Conditions": {
+    "Burning position": "S180"
+  },
+  "Product datasheet": {
+    "Primary article identifier": "4052899545366",
+    "Energy efficiency class": "G",
+    "Declaration no. in SCIP database": "No declarable substances contained"
+  }
+}

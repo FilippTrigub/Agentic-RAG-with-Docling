@@ -1,0 +1,33 @@
+{
+  "source": "documents\\ZMP_56122.pdf",
+  "content": "Product features and benefits\n_ Precise filament alignment with patented quartz pinch technology\n_ OSRAM HLX lamps provide 10% higher luminous efficacy over standard halogen\n_ Instant on and nearly constant luminous flux over the life of the lamp\n_ Dimmable\nProduct datasheet\n64641 HLX\nHalogen (< 75 V) Single End | OSRAM single end low voltage halogen lamps provide high quality light to meet the high demands of the medical and scientific markets\nAreas of application\n_ Microscopy\n_ Laboratory & Analysis\n_ UV Curing\n_ Fiber Illumination\n_ Surgical & Dental Overhead\n__\nTechnical data\nGeneral Product Information\nANSI code\nNominal luminous flux: 2700 lm\nIlluminated field: 3.0*6.0 mm²\n-\nGlobal order reference\n64641 HLX\nElectrical Data\nNominal wattage\n150 W\nNominal voltage\n24.0 V\nPhotometric Data\nPhysical Attributes & Dimensions\nLamp base: G6.35\nDiameter: 11.5mm\nLength: 50.0mm\nOperating Conditions\nBurning position: s135\nEnvironmental & Regulatory Information\nProduct datasheet\n__\nPrimary article identifier: 4050300048260\nDeclaration no. in SCIP database: No declarable substances contained\nCountry specific information\nProduct datasheet\n__\nSafety advice\nTo prevent personal injury or damage to property, halogen lamps may only be operated in suitable luminaires designed with suitable mechanisms (protective shields, grids, etc.) to ensure that in the event of a lamp bursting no parts/shards can escape and that during operation no ultraviolet radiation can escape. There must also be a warning sign to indicate that the lamps give off high levels of heat. Detailed information is available on request.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
+  "Product features and benefits": [
+    "_ Precise filament alignment with patented quartz pinch technology",
+    "_ OSRAM HLX lamps provide 10% higher luminous efficacy over standard halogen",
+    "_ Instant on and nearly constant luminous flux over the life of the lamp",
+    "_ Dimmable"
+  ],
+  "Areas of application": [
+    "_ Microscopy",
+    "_ Laboratory & Analysis",
+    "_ UV Curing",
+    "_ Fiber Illumination",
+    "_ Surgical & Dental Overhead"
+  ],
+  "General Product Information": {
+    "Nominal luminous flux": "2700 lm",
+    "Illuminated field": "3.0*6.0 mm²"
+  },
+  "Physical Attributes & Dimensions": {
+    "Lamp base": "G6.35",
+    "Diameter": "11.5mm",
+    "Length": "50.0mm"
+  },
+  "Operating Conditions": {
+    "Burning position": "s135"
+  },
+  "Product datasheet": {
+    "Primary article identifier": "4050300048260",
+    "Declaration no. in SCIP database": "No declarable substances contained"
+  }
+}

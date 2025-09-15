@@ -1,0 +1,48 @@
+{
+  "source": "documents\\ZMP_56105.pdf",
+  "content": "Product features and benefits\n_ Robust construction for reliable, lasting performance\n_ Consistent color over the life of the lamps\n_ Instant on and nearly constant luminous flux over the life of the lamp\n_ Broad product portfolio supporting the stage and studio markets\n_ Dimmable to 0% with traditional amber shift\nProduct datasheet\n64720 650 W 230 V\nHalogen (> 130 V) Single End | Offering a broad portfolio of high quality single end halogen lamps used in the stage and studio markets\nAreas of application\n_ Stage & Theatre\n_ Studio, TV, & Film\n_ Professional Photography\n_ Club & Disco\n__\nOSRAM\nTechnical data\nGeneral Product Information\nANSI code: -\nLIF code: CP/23\nGlobal order reference: 64720\nNominal wattage: 650W\nNominal voltage: 230 V\nNominal luminous flux: 16800 lm\nUseful luminous flux ( Φ use): 15270 lm\nΦ use value refers to luminous flux: 360\nLuminous efficacy: 25.85 lm/W\nIlluminated field: 13.0*17.0 mm² 1)\nColor temperature: 3200 K\nCorrelated color temperature CCT: 3141 K\nChromaticity coordinate x: 0.425\nChromaticity coordinate y: 0.400\nColor rendering index Ra: 100\nPhysical Attributes & Dimensions\nLamp base: GX9.5\nDiameter: 26.0mm\nProduct datasheet\n__\nProduct weight: 50.00 g\nBurning position: s90\nDimmable: Yes\nEnvironmental & Regulatory Information\nPrimary article identifier: 4008321638090 | 4050300017716\nEnergy efficiency class: G\nDeclaration no. in SCIP database: No declarable substances contained\nCountry specific information\nProduct datasheet\n__\nSafety advice\nTo prevent personal injury or damage to property, halogen lamps may only be operated in suitable luminaires designed with suitable mechanisms (protective shields, grids, etc.) to ensure that in the event of a lamp bursting no parts/shards can escape and that during operation no ultraviolet radiation can escape. There must also be a warning sign to indicate that the lamps give off high levels of heat. Detailed information is available on request.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
+  "Product features and benefits": [
+    "_ Robust construction for reliable, lasting performance",
+    "_ Consistent color over the life of the lamps",
+    "_ Instant on and nearly constant luminous flux over the life of the lamp",
+    "_ Broad product portfolio supporting the stage and studio markets",
+    "_ Dimmable to 0% with traditional amber shift"
+  ],
+  "Areas of application": [
+    "_ Stage & Theatre",
+    "_ Studio, TV, & Film",
+    "_ Professional Photography",
+    "_ Club & Disco"
+  ],
+  "General Product Information": {
+    "ANSI code": "-",
+    "LIF code": "CP/23",
+    "Global order reference": "64720",
+    "Nominal wattage": "650W",
+    "Nominal voltage": "230 V",
+    "Nominal luminous flux": "16800 lm",
+    "Useful luminous flux ( Φ use)": "15270 lm",
+    "Φ use value refers to luminous flux": "360",
+    "Luminous efficacy": "25.85 lm/W",
+    "Illuminated field": "13.0*17.0 mm² 1)",
+    "Color temperature": "3200 K",
+    "Correlated color temperature CCT": "3141 K",
+    "Chromaticity coordinate x": "0.425",
+    "Chromaticity coordinate y": "0.400",
+    "Color rendering index Ra": "100"
+  },
+  "Physical Attributes & Dimensions": {
+    "Lamp base": "GX9.5",
+    "Diameter": "26.0mm"
+  },
+  "Product datasheet": {
+    "Product weight": "50.00 g",
+    "Burning position": "s90",
+    "Dimmable": "Yes"
+  },
+  "Environmental & Regulatory Information": {
+    "Primary article identifier": "4008321638090 | 4050300017716",
+    "Energy efficiency class": "G",
+    "Declaration no. in SCIP database": "No declarable substances contained"
+  }
+}

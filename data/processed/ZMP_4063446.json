@@ -1,0 +1,34 @@
+{
+  "source": "documents\\ZMP_4063446.pdf",
+  "content": "Product features and benefits\n_ Lightweight and compact reflector lamps with ECG\n_ High luminance through very short arc and high pressure\n_ Produces brilliant light effects\n_ Stable light output over the entire lifetime\n_ Long lifetime\n_ Easy lamp replacement\n_ Approved by leading moving lighting fixture companies\nProduct datasheet\n__\nTechnical data\nGeneral Product Information\nCategory: CORE\nElectrical Data\nNominal wattage: 462W\nNominal voltage: 70.0 V\nPhotometric Data\nNominal luminous flux: 24000 lm\nColor temperature: 7900 K\nColor rendering index Ra: 85\nPhysical Attributes & Dimensions\nLamp base: -\nDiameter: 58.0mm\nLength: 72.0mm\nLifetime Data\nEnvironmental & Regulatory Information\nPrimary article identifier: 4062172302128 | 4062172302104\nDeclaration no. in SCIP database: No declarable substances contained\nProduct datasheet\n__\nSafety advice\nBecause of their high luminance, UV radiation and high internal pressure during operation, SIRIUS HRI lamps may only be operated in enclosed lamp casings specially constructed for the purpose. Appropriate filters must ensure that UV radiation is reduced to an acceptable level. Mercury is released if the lamp breaks. Special safety precautions must be taken. Information on safety and handling is available on request or can be found in the leaflet included with the lamp or in the operating instructions.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
+  "Product features and benefits": [
+    "_ Lightweight and compact reflector lamps with ECG",
+    "_ High luminance through very short arc and high pressure",
+    "_ Produces brilliant light effects",
+    "_ Stable light output over the entire lifetime",
+    "_ Long lifetime",
+    "_ Easy lamp replacement",
+    "_ Approved by leading moving lighting fixture companies"
+  ],
+  "General Product Information": {
+    "Category": "CORE"
+  },
+  "Electrical Data": {
+    "Nominal wattage": "462W",
+    "Nominal voltage": "70.0 V"
+  },
+  "Photometric Data": {
+    "Nominal luminous flux": "24000 lm",
+    "Color temperature": "7900 K",
+    "Color rendering index Ra": "85"
+  },
+  "Physical Attributes & Dimensions": {
+    "Lamp base": "-",
+    "Diameter": "58.0mm",
+    "Length": "72.0mm"
+  },
+  "Environmental & Regulatory Information": {
+    "Primary article identifier": "4062172302128 | 4062172302104",
+    "Declaration no. in SCIP database": "No declarable substances contained"
+  }
+}

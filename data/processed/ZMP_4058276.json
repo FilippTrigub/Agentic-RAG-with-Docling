@@ -1,0 +1,45 @@
+{
+  "source": "documents\\ZMP_4058276.pdf",
+  "content": "Product features and benefits\n_ Lightweight and compact reflector lamps with ECG\n_ High luminance through very short arc and high pressure\n_ Produces brilliant light effects\n_ Stable light output over the entire lifetime\n_ Long lifetime\n_ Easy lamp replacement\n_ Approved by leading moving lighting fixture companies\nProduct datasheet\nSIRIUS HRI 371 W S\nSIRIUS HRI | High pressure discharge lamps designed to provide brilliant light effects.\nAreas of application\n_ Concert Lighting\n_ Club & Disco\n_ Stage & Theatre\n_ Studio, TV, & Film\n_ Architecture & Architainment\n__\nOSRAM\nTechnical data\nGeneral Product Information\nProduct number (Americas): 55195\nProduct name (Americas): SIRIUS HRI 371W S 2/CS 1/SKU\nFamily brand: SIRIUS HRI\nCategory: VALUE\nElectrical Data\nNominal wattage: 371W\nNominal voltage: 70.0 V\nPhotometric Data\nNominal luminous flux: 19800 lm\nColor temperature: 7650 K\nColor rendering index Ra: 85\nPhysical Attributes & Dimensions\nElectrode gap (cold): 1.2mm\nLamp base: -\nDiameter: 58.0mm\nLength: 72.0mm\nOperating Conditions\nProduct datasheet\n__\nPrimary article identifier: 4062172056939 | 4062172056953\nDeclaration no. in SCIP database: No declarable substances contained\nProduct datasheet\n__\nSafety advice\nBecause of their high luminance, UV radiation and high internal pressure during operation, SIRIUS HRI lamps may only be operated in enclosed lamp casings specially constructed for the purpose. Appropriate filters must ensure that UV radiation is reduced to an acceptable level. Mercury is released if the lamp breaks. Special safety precautions must be taken. Information on safety and handling is available on request or can be found in the leaflet included with the lamp or in the operating instructions.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
+  "Product features and benefits": [
+    "_ Lightweight and compact reflector lamps with ECG",
+    "_ High luminance through very short arc and high pressure",
+    "_ Produces brilliant light effects",
+    "_ Stable light output over the entire lifetime",
+    "_ Long lifetime",
+    "_ Easy lamp replacement",
+    "_ Approved by leading moving lighting fixture companies"
+  ],
+  "Areas of application": [
+    "_ Concert Lighting",
+    "_ Club & Disco",
+    "_ Stage & Theatre",
+    "_ Studio, TV, & Film",
+    "_ Architecture & Architainment"
+  ],
+  "General Product Information": {
+    "Product number (Americas)": "55195",
+    "Product name (Americas)": "SIRIUS HRI 371W S 2/CS 1/SKU",
+    "Family brand": "SIRIUS HRI",
+    "Category": "VALUE"
+  },
+  "Electrical Data": {
+    "Nominal wattage": "371W",
+    "Nominal voltage": "70.0 V"
+  },
+  "Photometric Data": {
+    "Nominal luminous flux": "19800 lm",
+    "Color temperature": "7650 K",
+    "Color rendering index Ra": "85"
+  },
+  "Physical Attributes & Dimensions": {
+    "Electrode gap (cold)": "1.2mm",
+    "Lamp base": "-",
+    "Diameter": "58.0mm",
+    "Length": "72.0mm"
+  },
+  "Product datasheet": {
+    "Primary article identifier": "4062172056939 | 4062172056953",
+    "Declaration no. in SCIP database": "No declarable substances contained"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "source": "documents\\ZMP_56016.pdf",
+  "content": "Product features and benefits\n_ Robust construction for reliable, lasting performance\n_ Consistent color over the life of the lamps\n_ Instant on and nearly constant luminous flux over the life of the lamp\n_ Broad product portfolio supporting the stage and studio markets\n_ Dimmable to 0% with traditional amber shift\nProduct datasheet\n64745 1000 W 240 V\nHalogen (> 130 V) Single End | Offering a broad portfolio of high quality single end halogen lamps used in the stage and studio markets\nAreas of application\n_ Stage & Theatre\n_ Studio, TV, & Film\n_ Professional Photography\n_ Club & Disco\n__\nOSRAM\nTechnical data\nGeneral Product Information\nANSI code: FVA\nLIF code: CP/70\nElectrical Data\nNominal wattage: 1000W\nPhotometric Data\nNominal luminous flux: 26000 lm\nUseful luminous flux ( Φ use): 24735 lm\nΦ use value refers to luminous flux: 360\nLuminous efficacy: 26 lm/W\nIlluminated field: 13.0*15.0 mm²\nColor temperature: 3200 K\nCorrelated color temperature CCT: 3132 K\nChromaticity coordinate x: 0.409\nChromaticity coordinate y: 0.401\nColor rendering index Ra: 100\nPhysical Attributes & Dimensions\nLamp base: GX9.5\nDiameter: 26.0mm\nLength: 110.0mm\nProduct datasheet\n__\nOperating Conditions\nBurning position: s90\nEnvironmental & Regulatory Information\nPrimary article identifier: 4008321468659\nEnergy efficiency class: G\nDeclaration no. in SCIP database: No declarable substances contained\nProduct datasheet\n__\nSafety advice\nTo prevent personal injury or damage to property, halogen lamps may only be operated in suitable luminaires designed with suitable mechanisms (protective shields, grids, etc.) to ensure that in the event of a lamp bursting no parts/shards can escape and that during operation no ultraviolet radiation can escape. There must also be a warning sign to indicate that the lamps give off high levels of heat. Detailed information is available on request.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
+  "Product features and benefits": [
+    "_ Robust construction for reliable, lasting performance",
+    "_ Consistent color over the life of the lamps",
+    "_ Instant on and nearly constant luminous flux over the life of the lamp",
+    "_ Broad product portfolio supporting the stage and studio markets",
+    "_ Dimmable to 0% with traditional amber shift"
+  ],
+  "Areas of application": [
+    "_ Stage & Theatre",
+    "_ Studio, TV, & Film",
+    "_ Professional Photography",
+    "_ Club & Disco"
+  ],
+  "General Product Information": {
+    "ANSI code": "FVA",
+    "LIF code": "CP/70"
+  },
+  "Electrical Data": {
+    "Nominal wattage": "1000W"
+  },
+  "Photometric Data": {
+    "Nominal luminous flux": "26000 lm",
+    "Useful luminous flux ( Φ use)": "24735 lm",
+    "Φ use value refers to luminous flux": "360",
+    "Luminous efficacy": "26 lm/W",
+    "Illuminated field": "13.0*15.0 mm²",
+    "Color temperature": "3200 K",
+    "Correlated color temperature CCT": "3132 K",
+    "Chromaticity coordinate x": "0.409",
+    "Chromaticity coordinate y": "0.401",
+    "Color rendering index Ra": "100"
+  },
+  "Physical Attributes & Dimensions": {
+    "Lamp base": "GX9.5",
+    "Diameter": "26.0mm",
+    "Length": "110.0mm"
+  },
+  "Operating Conditions": {
+    "Burning position": "s90"
+  },
+  "Environmental & Regulatory Information": {
+    "Primary article identifier": "4008321468659",
+    "Energy efficiency class": "G",
+    "Declaration no. in SCIP database": "No declarable substances contained"
+  }
+}
