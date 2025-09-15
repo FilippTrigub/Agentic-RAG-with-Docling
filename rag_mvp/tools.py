@@ -35,21 +35,36 @@ def retrieve_context(
     *,
     k: Optional[int] = None,
     filt: Optional[Dict[str, Any]] = None,
+    contains: Optional[Dict[str, str]] = None,
 ) -> List[Dict[str, Any]]:
     # Use vectorstore directly to support passing filter at query-time
     vs = get_vectorstore(cfg.index_dir, cfg.collection_name)
     kk = k or cfg.k
-    # Chroma supports 'filter' for metadata filtering
+    # First-stage retrieval
     if filt:
-        docs = vs.similarity_search(query, k=kk, filter=filt)
+        docs = vs.similarity_search(query, k=max(kk * 4, 20), filter=filt)
     else:
-        docs = vs.similarity_search(query, k=kk)
+        docs = vs.similarity_search(query, k=max(kk * 4, 20))
+    # Optional contains-based metadata filtering at app layer (substring, case-insensitive)
+    if contains:
+        def ok(d) -> bool:
+            for key, needle in contains.items():
+                hay = (d.metadata or {}).get(key)
+                if not isinstance(hay, str):
+                    return False
+                if needle.lower() not in hay.lower():
+                    return False
+            return True
+        docs = [d for d in docs if ok(d)]
+    # Trim to k
+    docs = docs[:kk]
     results = []
     for d in docs:
         results.append({
             "text": d.page_content,
-            "source": d.metadata.get("source"),
-            "doc_id": d.metadata.get("doc_id"),
+            "source": (d.metadata or {}).get("source"),
+            "doc_id": (d.metadata or {}).get("doc_id"),
+            "metadata": d.metadata or {},
         })
     return results
 

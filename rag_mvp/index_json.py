@@ -28,6 +28,17 @@ def _clean_item(v: Any) -> Any:
 
 
 def _flatten_for_metadata(record: Dict[str, Any], path: Path) -> Dict[str, Any]:
+    """Flatten record into simple string metadata fields suitable for 'contains' checks.
+
+    Rules:
+    - Lists become a single string joined by " | ": field_name -> "item1 | item2 | ..."
+    - Dicts become a single string of "key: value" pairs joined by " | ": field_name -> "k1: v1 | k2: v2"
+    - Scalars become strings directly: field_name -> str(value)
+    - Always include 'source' and 'doc_id'
+    The field_name uses normalized (snake_case) of the original key, e.g.,
+    'Product features and benefits' -> 'product_features_and_benefits'
+    'Areas of application' -> 'areas_of_application'
+    """
     md: Dict[str, Any] = {
         "source": record.get("source") or str(path),
         "doc_id": path.stem,
@@ -36,24 +47,18 @@ def _flatten_for_metadata(record: Dict[str, Any], path: Path) -> Dict[str, Any]:
         if k == "content":
             continue
         nk = _norm_key(k)
-        if isinstance(v, dict):
-            for dk, dv in v.items():
-                md[f"kv.{nk}.{_norm_key(dk)}"] = _clean_item(dv)
-        elif isinstance(v, list):
-            # Join list items into a single string to satisfy Chroma's metadata type constraints
+        if isinstance(v, list):
             str_items = [_clean_item(x) for x in v if isinstance(x, str)]
             if str_items:
-                md[f"list.{nk}"] = " | ".join(str_items)
-                # Also index each item as a boolean flag for exact filtering
-                for item in str_items:
-                    md[f"list_item.{nk}.{_norm_key(item)}"] = True
-            # If list contains dicts, flatten with indices as a best-effort
-            for i, elem in enumerate(v):
-                if isinstance(elem, dict):
-                    for dk, dv in elem.items():
-                        md[f"kv.{nk}[{i}].{_norm_key(dk)}"] = _clean_item(dv)
+                md[nk] = " | ".join(str_items)
+        elif isinstance(v, dict):
+            parts: List[str] = []
+            for dk, dv in v.items():
+                parts.append(f"{dk}: {_clean_item(dv)}")
+            if parts:
+                md[nk] = " | ".join(parts)
         else:
-            md[f"kv.{nk}"] = _clean_item(v)
+            md[nk] = str(_clean_item(v))
     return md
 
 
