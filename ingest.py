@@ -1,0 +1,222 @@
+import argparse
+import json
+import os
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Sequence
+
+
+def _ensure_docling():
+    try:
+        from docling.document_converter import DocumentConverter  # noqa: F401
+    except Exception as e:  # pragma: no cover
+        raise SystemExit(
+            "Docling is required. Install with: uv add docling"
+        ) from e
+
+
+def _label_name(label: Any) -> Optional[str]:
+    if label is None:
+        return None
+    try:
+        return getattr(label, "name", None) or str(label)
+    except Exception:
+        return str(label)
+
+
+def _element_label_name(el: Any) -> Optional[str]:
+    for attr in ("label", "type", "category", "kind"):
+        if hasattr(el, attr):
+            name = _label_name(getattr(el, attr))
+            if name:
+                return name
+    return None
+
+
+def _element_text(el: Any) -> str:
+    for attr in ("text", "content", "value", "to_text"):
+        val = getattr(el, attr, None)
+        if callable(val):
+            try:
+                txt = val()
+                if isinstance(txt, str) and txt.strip():
+                    return txt
+            except Exception:
+                pass
+        elif isinstance(val, str) and val.strip():
+            return val
+    return str(el)
+
+
+def _table_to_rows(tbl: Any) -> Optional[List[List[str]]]:
+    df = getattr(tbl, "df", None)
+    if df is not None:
+        try:
+            headers = [str(h) for h in getattr(df, "columns", [])]
+            values = df.astype(str).values.tolist()
+            return ([headers] if headers else []) + values
+        except Exception:
+            pass
+
+    cells = getattr(tbl, "cells", None)
+    if cells is not None and isinstance(cells, Sequence):
+        try:
+            rows: List[List[str]] = []
+            for r in cells:
+                if isinstance(r, Sequence):
+                    rows.append([_element_text(c) for c in r])
+            if rows:
+                return rows
+        except Exception:
+            pass
+
+    rows_attr = getattr(tbl, "rows", None)
+    if rows_attr is not None and isinstance(rows_attr, Sequence):
+        try:
+            rows: List[List[str]] = []
+            for r in rows_attr:
+                rcells = getattr(r, "cells", None) or getattr(r, "values", None)
+                if rcells is None:
+                    continue
+                if isinstance(rcells, Sequence):
+                    rows.append([_element_text(c) for c in rcells])
+            if rows:
+                return rows
+        except Exception:
+            pass
+
+    return None
+
+
+def parse_pdf_with_docling(pdf_path: Path) -> Dict[str, Any]:
+    _ensure_docling()
+    from docling.document_converter import DocumentConverter
+
+    converter = DocumentConverter()
+    result = converter.convert(str(pdf_path))
+
+    elements = result.assembled.elements
+
+    allowed_labels = {"SECTION_HEADER", "LIST_ITEM", "TEXT", "TABLE"}
+    content_parts: List[str] = []
+    out: Dict[str, Any] = {"source": str(pdf_path), "content": ""}
+
+    current_header: Optional[str] = None
+    pending_list: List[str] = []
+
+    def flush_list_to_section():
+        nonlocal pending_list, current_header
+        if current_header and pending_list:
+            existing = out.get(current_header)
+            if isinstance(existing, list):
+                existing.extend(pending_list)
+            elif existing is None:
+                out[current_header] = list(pending_list)
+            pending_list = []
+
+    for el in elements:
+        label_name = _element_label_name(el)
+        if label_name not in allowed_labels:
+            continue
+
+        if label_name == "SECTION_HEADER":
+            flush_list_to_section()
+            header_text = _element_text(el).strip()
+            if header_text:
+                current_header = header_text
+                content_parts.append(header_text)
+            continue
+
+        if label_name == "LIST_ITEM":
+            txt = _element_text(el).strip()
+            if txt:
+                pending_list.append(txt)
+                content_parts.append(txt)
+            continue
+
+        if label_name == "TEXT":
+            txt = _element_text(el).strip()
+            if txt:
+                content_parts.append(txt)
+            continue
+
+        if label_name == "TABLE":
+            rows = _table_to_rows(el) or []
+            ncols = max((len(r) for r in rows), default=0)
+            if ncols != 2:
+                flush_list_to_section()
+                continue
+
+            mapping: Dict[str, str] = {}
+            start_idx = 0
+            if rows:
+                first = [c.strip().lower() for c in rows[0]]
+                if any(h in first for h in ("label", "key", "name")) and any(
+                    v in first for v in ("value", "val")
+                ):
+                    start_idx = 1
+
+            for r in rows[start_idx:]:
+                if len(r) != 2:
+                    continue
+                k, v = r[0].strip(), r[1].strip()
+                if k:
+                    mapping[k] = v
+
+            if mapping:
+                flush_list_to_section()
+                if current_header:
+                    existing = out.get(current_header)
+                    if existing is None:
+                        out[current_header] = mapping
+                content_parts.extend([f"{k}: {v}" for k, v in mapping.items()])
+            continue
+
+    flush_list_to_section()
+
+    out["content"] = "\n".join(content_parts).strip()
+    return out
+
+
+def ingest(input_dir: Path, output_dir: Path) -> None:
+    input_dir.mkdir(parents=True, exist_ok=True)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    pdfs = sorted([p for p in input_dir.glob("**/*.pdf") if p.is_file()])
+    if not pdfs:
+        print(f"No PDFs found in {input_dir}")
+        return
+
+    for pdf in pdfs:
+        try:
+            doc_json = parse_pdf_with_docling(pdf)
+            out_path = output_dir / (pdf.stem + ".json")
+            with out_path.open("w", encoding="utf-8") as f:
+                json.dump(doc_json, f, ensure_ascii=False, indent=2)
+            print(f"Wrote {out_path}")
+        except SystemExit:
+            raise
+        except Exception as e:
+            print(f"Failed to process {pdf}: {e}")
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Parse PDFs with Docling and emit JSON")
+    parser.add_argument(
+        "--input-dir",
+        type=Path,
+        default=Path("documents_trial"),
+        help="Directory with input PDFs",
+    )
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=Path("data/processed"),
+        help="Directory to write JSON outputs",
+    )
+    args = parser.parse_args()
+
+    ingest(args.input_dir, args.output_dir)
+
+
+if __name__ == "__main__":
+    main()
