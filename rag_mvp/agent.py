@@ -122,14 +122,7 @@ class Memory:
 
 def run_chat(index_dir: str = "data/index/chroma", collection: str = "rag_mvp") -> None:
     # Init LLM (requires CEREBRAS_API_KEY)
-    # llm = ChatCerebras(model="gpt-oss-120b")
-    llm = ChatGoogleGenerativeAI(
-        model="gemini-2.5-pro",
-        temperature=0.7,
-        max_tokens=None,
-        timeout=None,
-        max_retries=2,
-    )
+    llm = ChatCerebras(model="gpt-oss-120b")
 
     mem = Memory()
     retriever_cfg = RetrieverConfig(index_dir=Path(index_dir), collection_name=collection)
