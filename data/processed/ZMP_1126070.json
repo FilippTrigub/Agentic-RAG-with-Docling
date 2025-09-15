@@ -1,6 +1,6 @@
 {
   "source": "documents\\ZMP_1126070.pdf",
-  "content": "Product features and benefits\n_ Robust construction for reliable, lasting performance\n_ Consistent color over the life of the lamps\n_ Instant on and nearly constant luminous flux over the life of the lamp\n_ Broad product portfolio supporting the stage and studio markets\n_ Dimmable to 0% with traditional amber shift\nProduct datasheet\n64502 150 W 240 V\nHalogen (> 130 V) Single End | Offering a broad portfolio of high quality single end halogen lamps used in the stage and studio markets\nAreas of application\n_ Stage & Theatre\n_ Studio, TV, & Film\n_ Professional Photography\n_ Club & Disco\n__\nOSRAM\nTechnical data\nGeneral Product Information\nANSI code: -\nElectrical Data\nNominal wattage: 150W\nPhotometric Data\nNominal luminous flux: 4000 lm\nUseful luminous flux ( Φ use): 3760 lm\nΦ use value refers to luminous flux: 360\nIlluminated field: 13.0*1.9 mm²\nColor temperature: 3200 K\nCorrelated color temperature CCT: 3208 K\nChromaticity coordinate x: 0.423\nChromaticity coordinate y: 0.400\nPhysical Attributes & Dimensions\nLamp base: GX6.35\nDiameter: 18.0mm\nLength: 55.0mm\nOperating Conditions\nProduct datasheet\n__\nPrimary article identifier: 4052899363236 | 4052899080775\nDeclaration no. in SCIP database: No declarable substances contained\nProduct datasheet\n__\nSafety advice\nTo prevent personal injury or damage to property, halogen lamps may only be operated in suitable luminaires designed with suitable mechanisms (protective shields, grids, etc.) to ensure that in the event of a lamp bursting no parts/shards can escape and that during operation no ultraviolet radiation can escape. There must also be a warning sign to indicate that the lamps give off high levels of heat. Detailed information is available on request.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
+  "content": "Product features and benefits\n_ Robust construction for reliable, lasting performance\n_ Consistent color over the life of the lamps\n_ Instant on and nearly constant luminous flux over the life of the lamp\n_ Broad product portfolio supporting the stage and studio markets\n_ Dimmable to 0% with traditional amber shift\nProduct datasheet\n64502 150 W 240 V\nHalogen (> 130 V) Single End | Offering a broad portfolio of high quality single end halogen lamps used in the stage and studio markets\nAreas of application\n_ Stage & Theatre\n_ Studio, TV, & Film\n_ Professional Photography\n_ Club & Disco\n__\nOSRAM\nTechnical data\nGeneral Product Information\nANSI code: -\nGlobal order reference: 64502\nElectrical Data\nNominal wattage: 150W\nNominal voltage: 240 V\nPhotometric Data\nNominal luminous flux: 4000 lm\nUseful luminous flux ( Φ use): 3760 lm\nΦ use value refers to luminous flux: 360\nIlluminated field: 13.0*1.9 mm²\nColor temperature: 3200 K\nCorrelated color temperature CCT: 3208 K\nChromaticity coordinate x: 0.423\nChromaticity coordinate y: 0.400\nColor rendering index Ra: 100\nPhysical Attributes & Dimensions\nLamp base: GX6.35\nDiameter: 18.0mm\nLength: 55.0mm\nProduct weight: 6.50 g\nOperating Conditions\nBurning position: Any\nProduct datasheet\n__\nPrimary article identifier: 4052899363236 | 4052899080775\nDeclaration no. in SCIP database: No declarable substances contained\nCandidate list substance 1: No declarable substances contained\nProduct datasheet\n__\nSafety advice\nTo prevent personal injury or damage to property, halogen lamps may only be operated in suitable luminaires designed with suitable mechanisms (protective shields, grids, etc.) to ensure that in the event of a lamp bursting no parts/shards can escape and that during operation no ultraviolet radiation can escape. There must also be a warning sign to indicate that the lamps give off high levels of heat. Detailed information is available on request.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
   "Product features and benefits": [
     "_ Robust construction for reliable, lasting performance",
     "_ Consistent color over the life of the lamps",
@@ -15,10 +15,12 @@
     "_ Club & Disco"
   ],
   "General Product Information": {
-    "ANSI code": "-"
+    "ANSI code": "-",
+    "Global order reference": "64502"
   },
   "Electrical Data": {
-    "Nominal wattage": "150W"
+    "Nominal wattage": "150W",
+    "Nominal voltage": "240 V"
   },
   "Photometric Data": {
     "Nominal luminous flux": "4000 lm",
@@ -28,15 +30,21 @@
     "Color temperature": "3200 K",
     "Correlated color temperature CCT": "3208 K",
     "Chromaticity coordinate x": "0.423",
-    "Chromaticity coordinate y": "0.400"
+    "Chromaticity coordinate y": "0.400",
+    "Color rendering index Ra": "100"
   },
   "Physical Attributes & Dimensions": {
     "Lamp base": "GX6.35",
     "Diameter": "18.0mm",
-    "Length": "55.0mm"
+    "Length": "55.0mm",
+    "Product weight": "6.50 g"
+  },
+  "Operating Conditions": {
+    "Burning position": "Any"
   },
   "Product datasheet": {
     "Primary article identifier": "4052899363236 | 4052899080775",
-    "Declaration no. in SCIP database": "No declarable substances contained"
+    "Declaration no. in SCIP database": "No declarable substances contained",
+    "Candidate list substance 1": "No declarable substances contained"
   }
 }

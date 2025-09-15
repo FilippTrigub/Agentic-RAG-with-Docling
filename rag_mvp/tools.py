@@ -30,19 +30,20 @@ def get_retriever(cfg: RetrieverConfig):
 
 
 def retrieve_context(
-    query: str,
-    cfg: RetrieverConfig = RetrieverConfig(),
-    *,
-    k: Optional[int] = None,
-    filt: Optional[Dict[str, Any]] = None,
-    contains: Optional[Dict[str, str]] = None,
+        query: str,
+        cfg: RetrieverConfig = RetrieverConfig(),
+        *,
+        k: Optional[int] = None,
+        filt: Optional[Dict[str, Any]] = None,
+        where: Optional[str] = None,
+        contains: Optional[Dict[str, str]] = None,
 ) -> List[Dict[str, Any]]:
     # Use vectorstore directly to support passing filter at query-time
     vs = get_vectorstore(cfg.index_dir, cfg.collection_name)
     kk = k or cfg.k
     # First-stage retrieval
-    if filt:
-        docs = vs.similarity_search(query, k=max(kk * 4, 20), filter=filt)
+    if filt or where:
+        docs = vs.similarity_search(query, k=max(kk * 4, 20), filter=filt, where_document={"$contains": where})
     else:
         docs = vs.similarity_search(query, k=max(kk * 4, 20))
     # Optional contains-based metadata filtering at app layer (substring, case-insensitive)
@@ -55,6 +56,7 @@ def retrieve_context(
                 if needle.lower() not in hay.lower():
                     return False
             return True
+
         docs = [d for d in docs if ok(d)]
     # Trim to k
     docs = docs[:kk]
@@ -73,5 +75,5 @@ def format_context(snippets: List[Dict[str, Any]]) -> str:
     lines = []
     for i, s in enumerate(snippets, start=1):
         src = s.get("source") or s.get("doc_id") or "unknown"
-        lines.append(f"[{i}] ({src})\n{s.get('text','').strip()}")
+        lines.append(f"[{i}] ({src})\n{s.get('text', '').strip()}")
     return "\n\n".join(lines)

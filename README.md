@@ -74,14 +74,15 @@ The indexer will also add `doc_id` from the filename.
 - The document metadata transforms all maps into lists of strings containing the values as concatenated strings, for example:
 ```json
 {
-  "areas_of_application": "Stage & Theatre | Studio, TV, & Film | Professional Photography | Club & Disco",
-  "electrical_data": "Nominal wattage: 500W",
-  "environmental_regulatory_information": "Primary article identifier: 4008321099846 | 4052899015524 | Energy efficiency class: G | Declaration no. in SCIP database: No declarable substances contained",
-  "general_product_information": "ANSI code: FRJ | LIF code: CP/82",
-  "operating_conditions": "Burning position: Any | Dimmable: Yes",
-  "photometric_data": "Nominal luminous flux: 13500 lm | Useful luminous flux ( Φ use): 12240 lm | Φ use value refers to luminous flux: 360 | Luminous efficacy: 27 lm/W | Illuminated field: 8.0*18 mm² | Color temperature: 3200 K | Correlated color temperature CCT: 3193 K | Chromaticity coordinate x: 0.425 | Chromaticity coordinate y: 0.401 | Color rendering index Ra: 100",
-  "physical_attributes_dimensions": "Lamp base: GY9.5 | Diameter: 18.0mm | Length: 80.0mm",
-  "product_features_and_benefits": "Robust construction for reliable, lasting performance | Consistent color over the life of the lamps | Instant on and nearly constant luminous flux over the life of the lamp | Broad product portfolio supporting the stage and studio markets | Dimmable to 0% with traditional amber shift",
+  "areas_of_application": "Stage & Theatre | Studio, TV, & Film | Professional Photography | Club & Disco", 
+  "doc_id": "ZMP_1004795", 
+  "electrical_data": "Nominal wattage: 500W | Nominal voltage: 240 V", 
+  "environmental_regulatory_information": "Primary article identifier: 4008321099846 | 4052899015524 | Energy efficiency class: G | Declaration no. in SCIP database: No declarable substances contained | Candidate list substance 1: No declarable substances contained", 
+  "general_product_information": "ANSI code: FRJ | LIF code: CP/82 | Global order reference: 64674", 
+  "operating_conditions": "Burning position: Any | Dimmable: Yes | Nominal lifetime: 200 hr", 
+  "photometric_data": "Nominal luminous flux: 13500 lm | Useful luminous flux ( Φ use): 12240 lm | Φ use value refers to luminous flux: 360 | Luminous efficacy: 27 lm/W | Illuminated field: 8.0*18 mm² | Color temperature: 3200 K | Correlated color temperature CCT: 3193 K | Chromaticity coordinate x: 0.425 | Chromaticity coordinate y: 0.401 | Color rendering index Ra: 100 | Light center length (LCL): 46.5mm", 
+  "physical_attributes_dimensions": "Lamp base: GY9.5 | Diameter: 18.0mm | Length: 80.0mm | Product weight: 18.80 g", 
+  "product_features_and_benefits": "Robust construction for reliable, lasting performance | Consistent color over the life of the lamps | Instant on and nearly constant luminous flux over the life of the lamp | Broad product portfolio supporting the stage and studio markets | Dimmable to 0% with traditional amber shift", 
   "source": "documents\\ZMP_1004795.pdf"
 }
 ```

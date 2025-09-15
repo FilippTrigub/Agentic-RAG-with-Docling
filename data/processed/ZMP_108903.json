@@ -1,6 +1,6 @@
 {
   "source": "documents\\ZMP_108903.pdf",
-  "content": "Product features and benefits\n_ Robust construction for reliable, lasting performance\n_ Consistent color over the life of the lamps\n_ Instant on and nearly constant luminous flux over the life of the lamp\n_ Broad product portfolio supporting the stage and studio markets\n_ Dimmable to 0% with traditional amber shift\nProduct datasheet\n64788 2000 W 230 V\nHalogen (> 130 V) Single End | Offering a broad portfolio of high quality single end halogen lamps used in the stage and studio markets\nAreas of application\n_ Stage & Theatre\n_ Studio, TV, & Film\n_ Professional Photography\n_ Club & Disco\n__\nOSRAM\nTechnical data\nGeneral Product Information\nProduct number (Americas): 54484\nProduct name (Americas): 64788 CP/72 FTM 2000W 230V 12/CS 1/SKU\nANSI code: FTM\nLIF code: CP/72\nElectrical Data\nNominal wattage: 2000W\nNominal voltage: 230 V\nPhotometric Data\nNominal luminous flux: 52000 lm\nUseful luminous flux ( Φ use): 44615 lm\nΦ use value refers to luminous flux: 360\nLuminous efficacy: 25.4 lm/W\nIlluminated field: 20.0*19.0 mm²\nColor temperature: 3200 K\nCorrelated color temperature CCT: 3128 K\nChromaticity coordinate x: 0.428\nChromaticity coordinate y: 0.401\nColor rendering index Ra: 100\nLight center length (LCL): 70.0mm\nPhysical Attributes & Dimensions\nProduct datasheet\n__\nLamp base: GY16\nDiameter (in): 1.339 in\nDiameter: 35.0mm\nLength: 145.0mm\nOperating Conditions\nBurning position: s90\nLifetime Data\nEnvironmental & Regulatory Information\nPrimary article identifier: 4008321632173\nEnergy efficiency class: G\nDeclaration no. in SCIP database: No declarable substances contained\nCountry specific information\nProduct datasheet\n__\nSafety advice\nTo prevent personal injury or damage to property, halogen lamps may only be operated in suitable luminaires designed with suitable mechanisms (protective shields, grids, etc.) to ensure that in the event of a lamp bursting no parts/shards can escape and that during operation no ultraviolet radiation can escape. There must also be a warning sign to indicate that the lamps give off high levels of heat. Detailed information is available on request.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
+  "content": "Product features and benefits\n_ Robust construction for reliable, lasting performance\n_ Consistent color over the life of the lamps\n_ Instant on and nearly constant luminous flux over the life of the lamp\n_ Broad product portfolio supporting the stage and studio markets\n_ Dimmable to 0% with traditional amber shift\nProduct datasheet\n64788 2000 W 230 V\nHalogen (> 130 V) Single End | Offering a broad portfolio of high quality single end halogen lamps used in the stage and studio markets\nAreas of application\n_ Stage & Theatre\n_ Studio, TV, & Film\n_ Professional Photography\n_ Club & Disco\n__\nOSRAM\nTechnical data\nGeneral Product Information\nProduct number (Americas): 54484\nProduct name (Americas): 64788 CP/72 FTM 2000W 230V 12/CS 1/SKU\nANSI code: FTM\nLIF code: CP/72\nGlobal order reference: 64788\nElectrical Data\nNominal wattage: 2000W\nNominal voltage: 230 V\nType of current: AC\nPhotometric Data\nNominal luminous flux: 52000 lm\nUseful luminous flux ( Φ use): 44615 lm\nΦ use value refers to luminous flux: 360\nLuminous efficacy: 25.4 lm/W\nIlluminated field: 20.0*19.0 mm²\nColor temperature: 3200 K\nCorrelated color temperature CCT: 3128 K\nChromaticity coordinate x: 0.428\nChromaticity coordinate y: 0.401\nColor rendering index Ra: 100\nLight center length (LCL): 70.0mm\nLight center length (LCL) - (in): 2.76 in\nPhysical Attributes & Dimensions\nProduct datasheet\n__\nLamp base: GY16\nDiameter (in): 1.339 in\nDiameter: 35.0mm\nLength: 145.0mm\nProduct weight: 87.00 g\nOperating Conditions\nBurning position: s90\nDimmable: Yes\nLifetime Data\nNominal lifetime: 400 hr\nEnvironmental & Regulatory Information\nPrimary article identifier: 4008321632173\nEnergy efficiency class: G\nDeclaration no. in SCIP database: No declarable substances contained\nCandidate list substance 1: No declarable substances contained\nCountry specific information\nProduct datasheet\n__\nSafety advice\nTo prevent personal injury or damage to property, halogen lamps may only be operated in suitable luminaires designed with suitable mechanisms (protective shields, grids, etc.) to ensure that in the event of a lamp bursting no parts/shards can escape and that during operation no ultraviolet radiation can escape. There must also be a warning sign to indicate that the lamps give off high levels of heat. Detailed information is available on request.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
   "Product features and benefits": [
     "_ Robust construction for reliable, lasting performance",
     "_ Consistent color over the life of the lamps",
@@ -18,11 +18,13 @@
     "Product number (Americas)": "54484",
     "Product name (Americas)": "64788 CP/72 FTM 2000W 230V 12/CS 1/SKU",
     "ANSI code": "FTM",
-    "LIF code": "CP/72"
+    "LIF code": "CP/72",
+    "Global order reference": "64788"
   },
   "Electrical Data": {
     "Nominal wattage": "2000W",
-    "Nominal voltage": "230 V"
+    "Nominal voltage": "230 V",
+    "Type of current": "AC"
   },
   "Photometric Data": {
     "Nominal luminous flux": "52000 lm",
@@ -35,20 +37,27 @@
     "Chromaticity coordinate x": "0.428",
     "Chromaticity coordinate y": "0.401",
     "Color rendering index Ra": "100",
-    "Light center length (LCL)": "70.0mm"
+    "Light center length (LCL)": "70.0mm",
+    "Light center length (LCL) - (in)": "2.76 in"
   },
   "Product datasheet": {
     "Lamp base": "GY16",
     "Diameter (in)": "1.339 in",
     "Diameter": "35.0mm",
-    "Length": "145.0mm"
+    "Length": "145.0mm",
+    "Product weight": "87.00 g"
   },
   "Operating Conditions": {
-    "Burning position": "s90"
+    "Burning position": "s90",
+    "Dimmable": "Yes"
+  },
+  "Lifetime Data": {
+    "Nominal lifetime": "400 hr"
   },
   "Environmental & Regulatory Information": {
     "Primary article identifier": "4008321632173",
     "Energy efficiency class": "G",
-    "Declaration no. in SCIP database": "No declarable substances contained"
+    "Declaration no. in SCIP database": "No declarable substances contained",
+    "Candidate list substance 1": "No declarable substances contained"
   }
 }

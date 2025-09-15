@@ -1,6 +1,6 @@
 {
   "source": "documents\\ZMP_1200739.pdf",
-  "content": "Product features and benefits\n_ Lightweight and compact reflector lamps with ECG\n_ High luminance through very short arc and high pressure\n_ Produces brilliant light effects\n_ Stable light output over the entire lifetime\n_ Long lifetime\n_ Easy lamp replacement\n_ Approved by leading moving lighting fixture companies\nProduct datasheet\n__\nTechnical data\nGeneral Product Information\nProduct number (Americas): 54750\nProduct name (Americas): SIRIUS HRI 140W RO 2/CS 1/SKU\nFamily brand: SIRIUS HRI\nCategory: CUSTOMIZED\nElectrical Data\nNominal wattage: 140W\nNominal voltage: 70.0 V\nIgnition voltage: 2.5 kVp\nPhotometric Data\nNominal luminous flux: 5400 lm\nColor temperature: 9200 K\nColor rendering index Ra: 60\nAperature window (max): 5x3.8mm\nPhysical Attributes & Dimensions\nElectrode gap (cold): 1.0mm\nLamp base: -\nDiameter: 46.0mm\nLength: max. 44mm\nProduct datasheet\n__\nPrimary article identifier: 4052899258969 | 4052899224056\nDeclaration no. in SCIP database: No declarable substances contained\nProduct datasheet\n__\nSafety advice\nBecause of their high luminance, UV radiation and high internal pressure during operation, SIRIUS HRI lamps may only be operated in enclosed lamp casings specially constructed for the purpose. Appropriate filters must ensure that UV radiation is reduced to an acceptable level. Mercury is released if the lamp breaks. Special safety precautions must be taken. Information on safety and handling is available on request or can be found in the leaflet included with the lamp or in the operating instructions.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
+  "content": "Product features and benefits\n_ Lightweight and compact reflector lamps with ECG\n_ High luminance through very short arc and high pressure\n_ Produces brilliant light effects\n_ Stable light output over the entire lifetime\n_ Long lifetime\n_ Easy lamp replacement\n_ Approved by leading moving lighting fixture companies\nProduct datasheet\n__\nTechnical data\nGeneral Product Information\nProduct number (Americas): 54750\nProduct name (Americas): SIRIUS HRI 140W RO 2/CS 1/SKU\nFamily brand: SIRIUS HRI\nCategory: CUSTOMIZED\nGlobal order reference: SIRIUS HRI 140 WRO\nElectrical Data\nNominal wattage: 140W\nNominal voltage: 70.0 V\nIgnition voltage: 2.5 kVp\nNominal current: 1.9 A\nPhotometric Data\nNominal luminous flux: 5400 lm\nColor temperature: 9200 K\nColor rendering index Ra: 60\nAperature window (max): 5x3.8mm\nWorking distance: 37.7mm\nPhysical Attributes & Dimensions\nElectrode gap (cold): 1.0mm\nLamp base: -\nDiameter: 46.0mm\nLength: max. 44mm\nProduct weight: 60.00 g\nProduct datasheet\n__\nPrimary article identifier: 4052899258969 | 4052899224056\nDeclaration no. in SCIP database: No declarable substances contained\nCandidate list substance 1: No declarable substances contained\nProduct datasheet\n__\nSafety advice\nBecause of their high luminance, UV radiation and high internal pressure during operation, SIRIUS HRI lamps may only be operated in enclosed lamp casings specially constructed for the purpose. Appropriate filters must ensure that UV radiation is reduced to an acceptable level. Mercury is released if the lamp breaks. Special safety precautions must be taken. Information on safety and handling is available on request or can be found in the leaflet included with the lamp or in the operating instructions.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
   "Product features and benefits": [
     "_ Lightweight and compact reflector lamps with ECG",
     "_ High luminance through very short arc and high pressure",
@@ -14,27 +14,32 @@
     "Product number (Americas)": "54750",
     "Product name (Americas)": "SIRIUS HRI 140W RO 2/CS 1/SKU",
     "Family brand": "SIRIUS HRI",
-    "Category": "CUSTOMIZED"
+    "Category": "CUSTOMIZED",
+    "Global order reference": "SIRIUS HRI 140 WRO"
   },
   "Electrical Data": {
     "Nominal wattage": "140W",
     "Nominal voltage": "70.0 V",
-    "Ignition voltage": "2.5 kVp"
+    "Ignition voltage": "2.5 kVp",
+    "Nominal current": "1.9 A"
   },
   "Photometric Data": {
     "Nominal luminous flux": "5400 lm",
     "Color temperature": "9200 K",
     "Color rendering index Ra": "60",
-    "Aperature window (max)": "5x3.8mm"
+    "Aperature window (max)": "5x3.8mm",
+    "Working distance": "37.7mm"
   },
   "Physical Attributes & Dimensions": {
     "Electrode gap (cold)": "1.0mm",
     "Lamp base": "-",
     "Diameter": "46.0mm",
-    "Length": "max. 44mm"
+    "Length": "max. 44mm",
+    "Product weight": "60.00 g"
   },
   "Product datasheet": {
     "Primary article identifier": "4052899258969 | 4052899224056",
-    "Declaration no. in SCIP database": "No declarable substances contained"
+    "Declaration no. in SCIP database": "No declarable substances contained",
+    "Candidate list substance 1": "No declarable substances contained"
   }
 }

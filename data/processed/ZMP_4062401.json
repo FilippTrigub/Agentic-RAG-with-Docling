@@ -1,6 +1,6 @@
 {
   "source": "documents\\ZMP_4062401.pdf",
-  "content": "Product features and benefits\n_ Lightweight and compact reflector lamps with ECG\n_ High luminance through very short arc and high pressure\n_ Produces brilliant light effects\n_ Stable light output over the entire lifetime\n_ Long lifetime\n_ Easy lamp replacement\n_ Approved by leading moving lighting fixture companies\nProduct datasheet\nSIRIUS HRI 190 W+\nSIRIUS HRI | High pressure discharge lamps designed to provide brilliant light effects.\nAreas of application\n_ Concert Lighting\n_ Club & Disco\n_ Stage & Theatre\n_ Studio, TV, & Film\n_ Architecture & Architainment\n__\nOSRAM\nTechnical data\nGeneral Product Information\nProduct number (Americas): 54402\nProduct name (Americas): SIRIUS HRI 190W + 5R 2/CS 1/SKU\nFamily brand: SIRIUS HRI\nCategory: CORE\nElectrical Data\nNominal wattage: 190W\nNominal voltage: 70.0 V\nPhotometric Data\nNominal luminous flux: 8100 lm\nColor temperature: 8200 K\nColor rendering index Ra: 73\nPhysical Attributes & Dimensions\nLamp base: -\nDiameter: 51.0mm\nLength: 54.5mm\nLifetime Data\nEnvironmental & Regulatory Information\nPrimary article identifier: 4052899475397 | 4008321866592\nDeclaration no. in SCIP database: No declarable substances contained\nProduct datasheet\n__\nSafety advice\nBecause of their high luminance, UV radiation and high internal pressure during operation, SIRIUS HRI lamps may only be operated in enclosed lamp casings specially constructed for the purpose. Appropriate filters must ensure that UV radiation is reduced to an acceptable level. Mercury is released if the lamp breaks. Special safety precautions must be taken. Information on safety and handling is available on request or can be found in the leaflet included with the lamp or in the operating instructions.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
+  "content": "Product features and benefits\n_ Lightweight and compact reflector lamps with ECG\n_ High luminance through very short arc and high pressure\n_ Produces brilliant light effects\n_ Stable light output over the entire lifetime\n_ Long lifetime\n_ Easy lamp replacement\n_ Approved by leading moving lighting fixture companies\nProduct datasheet\nSIRIUS HRI 190 W+\nSIRIUS HRI | High pressure discharge lamps designed to provide brilliant light effects.\nAreas of application\n_ Concert Lighting\n_ Club & Disco\n_ Stage & Theatre\n_ Studio, TV, & Film\n_ Architecture & Architainment\n__\nOSRAM\nTechnical data\nGeneral Product Information\nProduct number (Americas): 54402\nProduct name (Americas): SIRIUS HRI 190W + 5R 2/CS 1/SKU\nFamily brand: SIRIUS HRI\nCategory: CORE\nGlobal order reference: SIRIUS HRI 190 W+\nElectrical Data\nNominal wattage: 190W\nNominal voltage: 70.0 V\nNominal current: 2.7 A\nPhotometric Data\nNominal luminous flux: 8100 lm\nColor temperature: 8200 K\nColor rendering index Ra: 73\nWorking distance: 34.5mm\nPhysical Attributes & Dimensions\nLamp base: -\nDiameter: 51.0mm\nLength: 54.5mm\nProduct weight: 60.00 g\nLifetime Data\nNominal lifetime: 3000 hr\nEnvironmental & Regulatory Information\nPrimary article identifier: 4052899475397 | 4008321866592\nDeclaration no. in SCIP database: No declarable substances contained\nCandidate list substance 1: No declarable substances contained\nProduct datasheet\n__\nSafety advice\nBecause of their high luminance, UV radiation and high internal pressure during operation, SIRIUS HRI lamps may only be operated in enclosed lamp casings specially constructed for the purpose. Appropriate filters must ensure that UV radiation is reduced to an acceptable level. Mercury is released if the lamp breaks. Special safety precautions must be taken. Information on safety and handling is available on request or can be found in the leaflet included with the lamp or in the operating instructions.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
   "Product features and benefits": [
     "_ Lightweight and compact reflector lamps with ECG",
     "_ High luminance through very short arc and high pressure",
@@ -21,24 +21,32 @@
     "Product number (Americas)": "54402",
     "Product name (Americas)": "SIRIUS HRI 190W + 5R 2/CS 1/SKU",
     "Family brand": "SIRIUS HRI",
-    "Category": "CORE"
+    "Category": "CORE",
+    "Global order reference": "SIRIUS HRI 190 W+"
   },
   "Electrical Data": {
     "Nominal wattage": "190W",
-    "Nominal voltage": "70.0 V"
+    "Nominal voltage": "70.0 V",
+    "Nominal current": "2.7 A"
   },
   "Photometric Data": {
     "Nominal luminous flux": "8100 lm",
     "Color temperature": "8200 K",
-    "Color rendering index Ra": "73"
+    "Color rendering index Ra": "73",
+    "Working distance": "34.5mm"
   },
   "Physical Attributes & Dimensions": {
     "Lamp base": "-",
     "Diameter": "51.0mm",
-    "Length": "54.5mm"
+    "Length": "54.5mm",
+    "Product weight": "60.00 g"
+  },
+  "Lifetime Data": {
+    "Nominal lifetime": "3000 hr"
   },
   "Environmental & Regulatory Information": {
     "Primary article identifier": "4052899475397 | 4008321866592",
-    "Declaration no. in SCIP database": "No declarable substances contained"
+    "Declaration no. in SCIP database": "No declarable substances contained",
+    "Candidate list substance 1": "No declarable substances contained"
   }
 }

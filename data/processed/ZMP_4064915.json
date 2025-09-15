@@ -1,6 +1,6 @@
 {
   "source": "documents\\ZMP_4064915.pdf",
-  "content": "Product features and benefits\n_ Lightweight and compact reflector lamps with ECG\n_ High luminance through very short arc and high pressure\n_ Produces brilliant light effects\n_ Stable light output over the entire lifetime\n_ Long lifetime\n_ Easy lamp replacement\n_ Approved by leading moving lighting fixture companies\nProduct datasheet\n__\nTechnical data\nGeneral Product Information\nCategory: CORE\nElectrical Data\nNominal wattage: 310W\nNominal voltage: 70.0 V\nPhotometric Data\nNominal luminous flux: 15000 lm\nColor temperature: 8000 K\nColor rendering index Ra: 84\nPhysical Attributes & Dimensions\nLamp base: -\nDiameter: 51.0mm\nLength: 53.5mm\nLifetime Data\nEnvironmental & Regulatory Information\nPrimary article identifier: 4062172202169 | 4062172202183\nDeclaration no. in SCIP database: No declarable substances contained\nProduct datasheet\n__\nSafety advice\nBecause of their high luminance, UV radiation and high internal pressure during operation, SIRIUS HRI lamps may only be operated in enclosed lamp casings specially constructed for the purpose. Appropriate filters must ensure that UV radiation is reduced to an acceptable level. Mercury is released if the lamp breaks. Special safety precautions must be taken. Information on safety and handling is available on request or can be found in the leaflet included with the lamp or in the operating instructions.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
+  "content": "Product features and benefits\n_ Lightweight and compact reflector lamps with ECG\n_ High luminance through very short arc and high pressure\n_ Produces brilliant light effects\n_ Stable light output over the entire lifetime\n_ Long lifetime\n_ Easy lamp replacement\n_ Approved by leading moving lighting fixture companies\nProduct datasheet\n__\nTechnical data\nGeneral Product Information\nCategory: CORE\nGlobal order reference: SIRIUS HRI 310W\nElectrical Data\nNominal wattage: 310W\nNominal voltage: 70.0 V\nNominal current: 4.5 A\nPhotometric Data\nNominal luminous flux: 15000 lm\nColor temperature: 8000 K\nColor rendering index Ra: 84\nWorking distance: 36.5mm\nPhysical Attributes & Dimensions\nLamp base: -\nDiameter: 51.0mm\nLength: 53.5mm\nProduct weight: 60.00 g\nLifetime Data\nNominal lifetime: 2500 hr\nEnvironmental & Regulatory Information\nPrimary article identifier: 4062172202169 | 4062172202183\nDeclaration no. in SCIP database: No declarable substances contained\nCandidate list substance 1: No declarable substances contained\nProduct datasheet\n__\nSafety advice\nBecause of their high luminance, UV radiation and high internal pressure during operation, SIRIUS HRI lamps may only be operated in enclosed lamp casings specially constructed for the purpose. Appropriate filters must ensure that UV radiation is reduced to an acceptable level. Mercury is released if the lamp breaks. Special safety precautions must be taken. Information on safety and handling is available on request or can be found in the leaflet included with the lamp or in the operating instructions.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
   "Product features and benefits": [
     "_ Lightweight and compact reflector lamps with ECG",
     "_ High luminance through very short arc and high pressure",
@@ -11,24 +11,32 @@
     "_ Approved by leading moving lighting fixture companies"
   ],
   "General Product Information": {
-    "Category": "CORE"
+    "Category": "CORE",
+    "Global order reference": "SIRIUS HRI 310W"
   },
   "Electrical Data": {
     "Nominal wattage": "310W",
-    "Nominal voltage": "70.0 V"
+    "Nominal voltage": "70.0 V",
+    "Nominal current": "4.5 A"
   },
   "Photometric Data": {
     "Nominal luminous flux": "15000 lm",
     "Color temperature": "8000 K",
-    "Color rendering index Ra": "84"
+    "Color rendering index Ra": "84",
+    "Working distance": "36.5mm"
   },
   "Physical Attributes & Dimensions": {
     "Lamp base": "-",
     "Diameter": "51.0mm",
-    "Length": "53.5mm"
+    "Length": "53.5mm",
+    "Product weight": "60.00 g"
+  },
+  "Lifetime Data": {
+    "Nominal lifetime": "2500 hr"
   },
   "Environmental & Regulatory Information": {
     "Primary article identifier": "4062172202169 | 4062172202183",
-    "Declaration no. in SCIP database": "No declarable substances contained"
+    "Declaration no. in SCIP database": "No declarable substances contained",
+    "Candidate list substance 1": "No declarable substances contained"
   }
 }

@@ -1,6 +1,6 @@
 {
   "source": "documents\\ZMP_4060123.pdf",
-  "content": "Product features and benefits\n_ Lightweight and compact reflector lamps with ECG\n_ High luminance through very short arc and high pressure\n_ Produces brilliant light effects\n_ Stable light output over the entire lifetime\n_ Long lifetime\n_ Easy lamp replacement\n_ Approved by leading moving lighting fixture companies\nProduct datasheet\nSIRIUS HRI 461 W\nSIRIUS HRI | High pressure discharge lamps designed to provide brilliant light effects.\nAreas of application\n_ Concert Lighting\n_ Club & Disco\n_ Stage & Theatre\n_ Studio, TV, & Film\n_ Architecture & Architainment\n__\nOSRAM\nTechnical data\nGeneral Product Information\nProduct number (Americas): 59981\nProduct name (Americas): SIRIUS HRI 461W 2/CS 1/SKU\nFamily brand: SIRIUS HRI\nCategory: VALUE\nElectrical Data\nNominal wattage: 461W\nNominal voltage: 83.0 V\nPhotometric Data\nNominal luminous flux: 24000 lm\nColor temperature: 7500 K\nColor rendering index Ra: 80\nPhysical Attributes & Dimensions\nElectrode gap (cold): 1.3mm\nLamp base: -\nDiameter: 60.0mm\nLength: 67.0mm\nOperating Conditions\nLifetime Data\nEnvironmental & Regulatory Information\nPrimary article identifier: 4052899553613\nDeclaration no. in SCIP database: No declarable substances contained\nProduct datasheet\n__\nSafety advice\nBecause of their high luminance, UV radiation and high internal pressure during operation, SIRIUS HRI lamps may only be operated in enclosed lamp casings specially constructed for the purpose. Appropriate filters must ensure that UV radiation is reduced to an acceptable level. Mercury is released if the lamp breaks. Special safety precautions must be taken. Information on safety and handling is available on request or can be found in the leaflet included with the lamp or in the operating instructions.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
+  "content": "Product features and benefits\n_ Lightweight and compact reflector lamps with ECG\n_ High luminance through very short arc and high pressure\n_ Produces brilliant light effects\n_ Stable light output over the entire lifetime\n_ Long lifetime\n_ Easy lamp replacement\n_ Approved by leading moving lighting fixture companies\nProduct datasheet\nSIRIUS HRI 461 W\nSIRIUS HRI | High pressure discharge lamps designed to provide brilliant light effects.\nAreas of application\n_ Concert Lighting\n_ Club & Disco\n_ Stage & Theatre\n_ Studio, TV, & Film\n_ Architecture & Architainment\n__\nOSRAM\nTechnical data\nGeneral Product Information\nProduct number (Americas): 59981\nProduct name (Americas): SIRIUS HRI 461W 2/CS 1/SKU\nFamily brand: SIRIUS HRI\nCategory: VALUE\nGlobal order reference: SIRIUS HRI 461W\nElectrical Data\nNominal wattage: 461W\nNominal voltage: 83.0 V\nNominal current: 5.3 A\nPhotometric Data\nNominal luminous flux: 24000 lm\nColor temperature: 7500 K\nColor rendering index Ra: 80\nWorking distance: 41mm\nPhysical Attributes & Dimensions\nElectrode gap (cold): 1.3mm\nLamp base: -\nDiameter: 60.0mm\nLength: 67.0mm\nProduct weight: 140.00 g\nOperating Conditions\nBurning position: Any\nLifetime Data\nNominal lifetime: 1500 hr\nEnvironmental & Regulatory Information\nPrimary article identifier: 4052899553613\nDeclaration no. in SCIP database: No declarable substances contained\nCandidate list substance 1: No declarable substances contained\nProduct datasheet\n__\nSafety advice\nBecause of their high luminance, UV radiation and high internal pressure during operation, SIRIUS HRI lamps may only be operated in enclosed lamp casings specially constructed for the purpose. Appropriate filters must ensure that UV radiation is reduced to an acceptable level. Mercury is released if the lamp breaks. Special safety precautions must be taken. Information on safety and handling is available on request or can be found in the leaflet included with the lamp or in the operating instructions.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
   "Product features and benefits": [
     "_ Lightweight and compact reflector lamps with ECG",
     "_ High luminance through very short arc and high pressure",
@@ -21,25 +21,36 @@
     "Product number (Americas)": "59981",
     "Product name (Americas)": "SIRIUS HRI 461W 2/CS 1/SKU",
     "Family brand": "SIRIUS HRI",
-    "Category": "VALUE"
+    "Category": "VALUE",
+    "Global order reference": "SIRIUS HRI 461W"
   },
   "Electrical Data": {
     "Nominal wattage": "461W",
-    "Nominal voltage": "83.0 V"
+    "Nominal voltage": "83.0 V",
+    "Nominal current": "5.3 A"
   },
   "Photometric Data": {
     "Nominal luminous flux": "24000 lm",
     "Color temperature": "7500 K",
-    "Color rendering index Ra": "80"
+    "Color rendering index Ra": "80",
+    "Working distance": "41mm"
   },
   "Physical Attributes & Dimensions": {
     "Electrode gap (cold)": "1.3mm",
     "Lamp base": "-",
     "Diameter": "60.0mm",
-    "Length": "67.0mm"
+    "Length": "67.0mm",
+    "Product weight": "140.00 g"
+  },
+  "Operating Conditions": {
+    "Burning position": "Any"
+  },
+  "Lifetime Data": {
+    "Nominal lifetime": "1500 hr"
   },
   "Environmental & Regulatory Information": {
     "Primary article identifier": "4052899553613",
-    "Declaration no. in SCIP database": "No declarable substances contained"
+    "Declaration no. in SCIP database": "No declarable substances contained",
+    "Candidate list substance 1": "No declarable substances contained"
   }
 }

@@ -1,17 +1,31 @@
 import argparse
 import json
 import os
+from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Sequence
+from typing import Any, Dict, List, Optional, Sequence, Tuple
 
 
 def _ensure_docling():
     try:
-        from docling.document_converter import DocumentConverter  # noqa: F401
+        from docling.document_converter import DocumentConverter
     except Exception as e:  # pragma: no cover
         raise SystemExit(
             "Docling is required. Install with: uv add docling"
         ) from e
+
+
+_CONVERTER = None
+
+
+def _get_converter():
+    """Lazily create a DocumentConverter per process to avoid re-initialization overhead."""
+    global _CONVERTER
+    if _CONVERTER is None:
+        from docling.document_converter import DocumentConverter
+
+        _CONVERTER = DocumentConverter()
+    return _CONVERTER
 
 
 def _label_name(label: Any) -> Optional[str]:
@@ -66,9 +80,7 @@ def _table_to_rows(tbl: Any) -> Optional[List[List[str]]]:
 
 def parse_pdf_with_docling(pdf_path: Path) -> Dict[str, Any]:
     _ensure_docling()
-    from docling.document_converter import DocumentConverter
-
-    converter = DocumentConverter()
+    converter = _get_converter()
     result = converter.convert(str(pdf_path))
 
     elements = result.assembled.elements
@@ -154,7 +166,22 @@ def parse_pdf_with_docling(pdf_path: Path) -> Dict[str, Any]:
     return out
 
 
-def ingest(input_dir: Path, output_dir: Path) -> None:
+def _process_one(pdf: Path, output_dir: Path) -> Tuple[str, Optional[str]]:
+    """Worker to parse a single PDF and write JSON.
+
+    Returns (output_path or input path on error, error message or None).
+    """
+    try:
+        doc_json = parse_pdf_with_docling(pdf)
+        out_path = output_dir / (pdf.stem + ".json")
+        with out_path.open("w", encoding="utf-8") as f:
+            json.dump(doc_json, f, ensure_ascii=False, indent=2)
+        return (str(out_path), None)
+    except Exception as e:
+        return (str(pdf), str(e))
+
+
+def ingest(input_dir: Path, output_dir: Path, workers: int = 1) -> None:
     input_dir.mkdir(parents=True, exist_ok=True)
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -163,17 +190,33 @@ def ingest(input_dir: Path, output_dir: Path) -> None:
         print(f"No PDFs found in {input_dir}")
         return
 
-    for pdf in pdfs:
-        try:
-            doc_json = parse_pdf_with_docling(pdf)
-            out_path = output_dir / (pdf.stem + ".json")
-            with out_path.open("w", encoding="utf-8") as f:
-                json.dump(doc_json, f, ensure_ascii=False, indent=2)
-            print(f"Wrote {out_path}")
-        except SystemExit:
-            raise
-        except Exception as e:
-            print(f"Failed to process {pdf}: {e}")
+    # Determine worker count
+    if workers is None or workers <= 0:
+        workers = 1
+
+    if workers == 1:
+        for pdf in pdfs:
+            path, err = _process_one(pdf, output_dir)
+            if err:
+                print(f"Failed to process {pdf}: {err}")
+            else:
+                print(f"Wrote {path}")
+        return
+
+    print(f"Processing {len(pdfs)} PDFs with {workers} workers...")
+    with ProcessPoolExecutor(max_workers=workers) as ex:
+        futures = {ex.submit(_process_one, pdf, output_dir): pdf for pdf in pdfs}
+        for fut in as_completed(futures):
+            pdf = futures[fut]
+            try:
+                path, err = fut.result()
+            except Exception as e:
+                print(f"Failed to process {pdf}: {e}")
+                continue
+            if err:
+                print(f"Failed to process {pdf}: {err}")
+            else:
+                print(f"Wrote {path}")
 
 
 def main():
@@ -181,18 +224,24 @@ def main():
     parser.add_argument(
         "--input-dir",
         type=Path,
-        default=Path("trial"),
+        default=Path("documents"),
         help="Directory with input PDFs",
     )
     parser.add_argument(
         "--output-dir",
         type=Path,
-        default=Path("data/trial"),
+        default=Path("data/processed"),
         help="Directory to write JSON outputs",
+    )
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=min(max((os.cpu_count() or 2) - 1, 1), 5),
+        help="Number of parallel worker processes (default: CPU count - 1)",
     )
     args = parser.parse_args()
 
-    ingest(args.input_dir, args.output_dir)
+    ingest(args.input_dir, args.output_dir, workers=args.workers)
 
 
 if __name__ == "__main__":

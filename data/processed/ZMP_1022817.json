@@ -1,6 +1,6 @@
 {
   "source": "documents\\ZMP_1022817.pdf",
-  "content": "Product features and benefits\n_ Lightweight and compact reflector lamps with ECG\n_ High luminance through very short arc and high pressure\n_ Produces brilliant light effects\n_ Stable light output over the entire lifetime\n_ Long lifetime\n_ Easy lamp replacement\n_ Approved by leading moving lighting fixture companies\nProduct datasheet\nSIRIUS HRI 280 W\nSIRIUS HRI | High pressure discharge lamps designed to provide brilliant light effects.\nAreas of application\n_ Concert Lighting\n_ Club & Disco\n_ Stage & Theatre\n_ Studio, TV, & Film\n_ Architecture & Architainment\n__\nOSRAM\nTechnical data\nGeneral Product Information\nProduct number (Americas): 4008321810342\nProduct name (Americas): SIRIUS HRI 280W 2/CS 1/SKU\nFamily brand: SIRIUS HRI\nCategory: CORE\nElectrical Data\nNominal wattage: 280W\nNominal voltage: 70.0 V\nIgnition voltage: 2.5 kVp\nPhotometric Data\nNominal luminous flux: 11500 lm\nColor temperature: 7800 K\nColor rendering index Ra: 78\nAperature window (max): 5x3.8mm\nPhysical Attributes & Dimensions\nElectrode gap (cold): 0.9mm\nLamp base: -\nDiameter (in): 2.008 in\nDiameter: 51.0mm\nLength: 54.5mm\nProduct datasheet\n__\nPrimary article identifier: 4008321810342\nDeclaration no. in SCIP database: No declarable substances contained\nProduct datasheet\n__\nSafety advice\nBecause of their high luminance, UV radiation and high internal pressure during operation, SIRIUS HRI lamps may only be operated in enclosed lamp casings specially constructed for the purpose. Appropriate filters must ensure that UV radiation is reduced to an acceptable level. Mercury is released if the lamp breaks. Special safety precautions must be taken. Information on safety and handling is available on request or can be found in the leaflet included with the lamp or in the operating instructions.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
+  "content": "Product features and benefits\n_ Lightweight and compact reflector lamps with ECG\n_ High luminance through very short arc and high pressure\n_ Produces brilliant light effects\n_ Stable light output over the entire lifetime\n_ Long lifetime\n_ Easy lamp replacement\n_ Approved by leading moving lighting fixture companies\nProduct datasheet\nSIRIUS HRI 280 W\nSIRIUS HRI | High pressure discharge lamps designed to provide brilliant light effects.\nAreas of application\n_ Concert Lighting\n_ Club & Disco\n_ Stage & Theatre\n_ Studio, TV, & Film\n_ Architecture & Architainment\n__\nOSRAM\nTechnical data\nGeneral Product Information\nProduct number (Americas): 4008321810342\nProduct name (Americas): SIRIUS HRI 280W 2/CS 1/SKU\nFamily brand: SIRIUS HRI\nCategory: CORE\nGlobal order reference: SIRIUS HRI 280W\nElectrical Data\nNominal wattage: 280W\nNominal voltage: 70.0 V\nIgnition voltage: 2.5 kVp\nNominal current: 4 A\nPhotometric Data\nNominal luminous flux: 11500 lm\nColor temperature: 7800 K\nColor rendering index Ra: 78\nAperature window (max): 5x3.8mm\nWorking distance: 34.5mm\nPhysical Attributes & Dimensions\nElectrode gap (cold): 0.9mm\nLamp base: -\nDiameter (in): 2.008 in\nDiameter: 51.0mm\nLength: 54.5mm\nProduct weight: 60.00 g\nProduct datasheet\n__\nPrimary article identifier: 4008321810342\nDeclaration no. in SCIP database: No declarable substances contained\nCandidate list substance 1: No declarable substances contained\nProduct datasheet\n__\nSafety advice\nBecause of their high luminance, UV radiation and high internal pressure during operation, SIRIUS HRI lamps may only be operated in enclosed lamp casings specially constructed for the purpose. Appropriate filters must ensure that UV radiation is reduced to an acceptable level. Mercury is released if the lamp breaks. Special safety precautions must be taken. Information on safety and handling is available on request or can be found in the leaflet included with the lamp or in the operating instructions.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
   "Product features and benefits": [
     "_ Lightweight and compact reflector lamps with ECG",
     "_ High luminance through very short arc and high pressure",
@@ -21,28 +21,33 @@
     "Product number (Americas)": "4008321810342",
     "Product name (Americas)": "SIRIUS HRI 280W 2/CS 1/SKU",
     "Family brand": "SIRIUS HRI",
-    "Category": "CORE"
+    "Category": "CORE",
+    "Global order reference": "SIRIUS HRI 280W"
   },
   "Electrical Data": {
     "Nominal wattage": "280W",
     "Nominal voltage": "70.0 V",
-    "Ignition voltage": "2.5 kVp"
+    "Ignition voltage": "2.5 kVp",
+    "Nominal current": "4 A"
   },
   "Photometric Data": {
     "Nominal luminous flux": "11500 lm",
     "Color temperature": "7800 K",
     "Color rendering index Ra": "78",
-    "Aperature window (max)": "5x3.8mm"
+    "Aperature window (max)": "5x3.8mm",
+    "Working distance": "34.5mm"
   },
   "Physical Attributes & Dimensions": {
     "Electrode gap (cold)": "0.9mm",
     "Lamp base": "-",
     "Diameter (in)": "2.008 in",
     "Diameter": "51.0mm",
-    "Length": "54.5mm"
+    "Length": "54.5mm",
+    "Product weight": "60.00 g"
   },
   "Product datasheet": {
     "Primary article identifier": "4008321810342",
-    "Declaration no. in SCIP database": "No declarable substances contained"
+    "Declaration no. in SCIP database": "No declarable substances contained",
+    "Candidate list substance 1": "No declarable substances contained"
   }
 }

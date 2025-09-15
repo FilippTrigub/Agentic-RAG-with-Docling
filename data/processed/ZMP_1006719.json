@@ -1,6 +1,6 @@
 {
   "source": "documents\\ZMP_1006719.pdf",
-  "content": "Product features and benefits\n_ Precise filament alignment with patented quartz pinch technology\n_ OSRAM HLX lamps provide 10% higher luminous efficacy over standard halogen\n_ Instant on and nearly constant luminous flux over the life of the lamp\n_ Dimmable\nProduct datasheet\n64647 120 W 24 V\nHalogen (< 75 V) Single End | OSRAM single end low voltage halogen lamps provide high quality light to meet the high demands of the medical and scientific markets\nAreas of application\n_ Microscopy\n_ Laboratory & Analysis\n_ UV Curing\n_ Fiber Illumination\n_ Surgical & Dental Overhead\n__\nOSRAM\nTechnical data\nGeneral Product Information\nProduct number (Americas): 54320\nProduct name (Americas): 64647 120W 24V 40/CS 1/SKU\nLamp type: SINGLE END\nANSI code: -\nElectrical Data\nNominal wattage: 113W\nNominal voltage: 22.8 V\nPhotometric Data\nNominal luminous flux: 3600 lm\nIlluminated field: 2.3*6.4 mm²\nColor rendering index Ra: 100\nLight center length (LCL): 30.0mm\nPhysical Attributes & Dimensions\nLamp base: G6.35\nDiameter: 13.0mm\nLength: 44.0mm\nOperating Conditions\nProduct datasheet\n__\nLifetime Data\nEnvironmental & Regulatory Information\nPrimary article identifier: 4008321107114\nDeclaration no. in SCIP database: No declarable substances contained\nCountry specific information\nProduct datasheet\n__\nSafety advice\nTo prevent personal injury or damage to property, halogen lamps may only be operated in suitable luminaires designed with suitable mechanisms (protective shields, grids, etc.) to ensure that in the event of a lamp bursting no parts/shards can escape and that during operation no ultraviolet radiation can escape. There must also be a warning sign to indicate that the lamps give off high levels of heat. Detailed information is available on request.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
+  "content": "Product features and benefits\n_ Precise filament alignment with patented quartz pinch technology\n_ OSRAM HLX lamps provide 10% higher luminous efficacy over standard halogen\n_ Instant on and nearly constant luminous flux over the life of the lamp\n_ Dimmable\nProduct datasheet\n64647 120 W 24 V\nHalogen (< 75 V) Single End | OSRAM single end low voltage halogen lamps provide high quality light to meet the high demands of the medical and scientific markets\nAreas of application\n_ Microscopy\n_ Laboratory & Analysis\n_ UV Curing\n_ Fiber Illumination\n_ Surgical & Dental Overhead\n__\nOSRAM\nTechnical data\nGeneral Product Information\nProduct number (Americas): 54320\nProduct name (Americas): 64647 120W 24V 40/CS 1/SKU\nLamp type: SINGLE END\nANSI code: -\nGlobal order reference: 64647\nElectrical Data\nNominal wattage: 113W\nNominal voltage: 22.8 V\nType of current: AC\nPhotometric Data\nNominal luminous flux: 3600 lm\nIlluminated field: 2.3*6.4 mm²\nColor rendering index Ra: 100\nLight center length (LCL): 30.0mm\nLight center length (LCL) - (in): 1.18 in\nPhysical Attributes & Dimensions\nLamp base: G6.35\nDiameter: 13.0mm\nLength: 44.0mm\nProduct weight: 3.00 g\nOperating Conditions\nBurning position: Any\nProduct datasheet\n__\nLifetime Data\nNominal lifetime: 1000 hr\nEnvironmental & Regulatory Information\nPrimary article identifier: 4008321107114\nDeclaration no. in SCIP database: No declarable substances contained\nCandidate list substance 1: No declarable substances contained\nCountry specific information\nProduct datasheet\n__\nSafety advice\nTo prevent personal injury or damage to property, halogen lamps may only be operated in suitable luminaires designed with suitable mechanisms (protective shields, grids, etc.) to ensure that in the event of a lamp bursting no parts/shards can escape and that during operation no ultraviolet radiation can escape. There must also be a warning sign to indicate that the lamps give off high levels of heat. Detailed information is available on request.\nLogistical Data\nThe mentioned product code describes the smallest quantity unit which can be ordered. One shipping unit can contain one or more single products. When placing an order, for the quantity please enter single or multiples of a shipping unit.\nDisclaimer\nSubject to change without notice. Errors and omission excepted. Always make sure to use the most recent release.\nProduct datasheet\n__",
   "Product features and benefits": [
     "_ Precise filament alignment with patented quartz pinch technology",
     "_ OSRAM HLX lamps provide 10% higher luminous efficacy over standard halogen",
@@ -18,25 +18,36 @@
     "Product number (Americas)": "54320",
     "Product name (Americas)": "64647 120W 24V 40/CS 1/SKU",
     "Lamp type": "SINGLE END",
-    "ANSI code": "-"
+    "ANSI code": "-",
+    "Global order reference": "64647"
   },
   "Electrical Data": {
     "Nominal wattage": "113W",
-    "Nominal voltage": "22.8 V"
+    "Nominal voltage": "22.8 V",
+    "Type of current": "AC"
   },
   "Photometric Data": {
     "Nominal luminous flux": "3600 lm",
     "Illuminated field": "2.3*6.4 mm²",
     "Color rendering index Ra": "100",
-    "Light center length (LCL)": "30.0mm"
+    "Light center length (LCL)": "30.0mm",
+    "Light center length (LCL) - (in)": "1.18 in"
   },
   "Physical Attributes & Dimensions": {
     "Lamp base": "G6.35",
     "Diameter": "13.0mm",
-    "Length": "44.0mm"
+    "Length": "44.0mm",
+    "Product weight": "3.00 g"
+  },
+  "Operating Conditions": {
+    "Burning position": "Any"
+  },
+  "Lifetime Data": {
+    "Nominal lifetime": "1000 hr"
   },
   "Environmental & Regulatory Information": {
     "Primary article identifier": "4008321107114",
-    "Declaration no. in SCIP database": "No declarable substances contained"
+    "Declaration no. in SCIP database": "No declarable substances contained",
+    "Candidate list substance 1": "No declarable substances contained"
   }
 }
