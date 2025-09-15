@@ -48,42 +48,17 @@ def _element_text(el: Any) -> str:
 
 
 def _table_to_rows(tbl: Any) -> Optional[List[List[str]]]:
-    df = getattr(tbl, "df", None)
-    if df is not None:
-        try:
-            headers = [str(h) for h in getattr(df, "columns", [])]
-            values = df.astype(str).values.tolist()
-            return ([headers] if headers else []) + values
-        except Exception:
-            pass
-
-    cells = getattr(tbl, "cells", None)
+    cells = getattr(tbl, "table_cells", None)
     if cells is not None and isinstance(cells, Sequence):
-        try:
-            rows: List[List[str]] = []
-            for r in cells:
-                if isinstance(r, Sequence):
-                    rows.append([_element_text(c) for c in r])
-            if rows:
-                return rows
-        except Exception:
-            pass
-
-    rows_attr = getattr(tbl, "rows", None)
-    if rows_attr is not None and isinstance(rows_attr, Sequence):
-        try:
-            rows: List[List[str]] = []
-            for r in rows_attr:
-                rcells = getattr(r, "cells", None) or getattr(r, "values", None)
-                if rcells is None:
-                    continue
-                if isinstance(rcells, Sequence):
-                    rows.append([_element_text(c) for c in rcells])
-            if rows:
-                return rows
-        except Exception:
-            pass
-
+        rows, row = [], []
+        row_number = cells[0].end_row_offset_idx
+        for cell in cells:
+            if row_number != cell.end_row_offset_idx:
+                rows.append(row)
+                row = []
+                row_number = cell.end_row_offset_idx
+            row.append(_element_text(cell.text))
+        return rows
     return None
 
 
@@ -204,7 +179,7 @@ def main():
     parser.add_argument(
         "--input-dir",
         type=Path,
-        default=Path("documents_trial"),
+        default=Path("documents"),
         help="Directory with input PDFs",
     )
     parser.add_argument(

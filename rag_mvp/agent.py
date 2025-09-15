@@ -5,7 +5,7 @@ from dataclasses import dataclass, field
 from typing import List
 
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
-from langchain_community.chat_models import ChatCerebras
+from langchain_cerebras import ChatCerebras
 
 from .tools import RetrieverConfig, retrieve_context, format_context
 
@@ -33,7 +33,7 @@ class Memory:
 
 def run_chat(index_dir: str = "data/index/chroma", collection: str = "rag_mvp") -> None:
     # Init LLM (requires CEREBRAS_API_KEY)
-    llm = ChatCerebras(model="llama3.1-8b")
+    llm = ChatCerebras(model="gpt-oss-120b")
 
     mem = Memory()
     retriever_cfg = RetrieverConfig(index_dir=index_dir, collection_name=collection)

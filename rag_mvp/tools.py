@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 
 from langchain_community.vectorstores import Chroma
 from langchain_google_genai.embeddings import GoogleGenerativeAIEmbeddings
@@ -16,7 +16,7 @@ class RetrieverConfig:
 
 
 def get_vectorstore(index_dir: Path, collection_name: str) -> Chroma:
-    emb = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+    emb = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001")
     return Chroma(
         collection_name=collection_name,
         persist_directory=str(index_dir),
@@ -29,9 +29,21 @@ def get_retriever(cfg: RetrieverConfig):
     return vs.as_retriever(search_kwargs={"k": cfg.k})
 
 
-def retrieve_context(query: str, cfg: RetrieverConfig = RetrieverConfig()) -> List[Dict[str, Any]]:
-    retriever = get_retriever(cfg)
-    docs = retriever.get_relevant_documents(query)
+def retrieve_context(
+    query: str,
+    cfg: RetrieverConfig = RetrieverConfig(),
+    *,
+    k: Optional[int] = None,
+    filt: Optional[Dict[str, Any]] = None,
+) -> List[Dict[str, Any]]:
+    # Use vectorstore directly to support passing filter at query-time
+    vs = get_vectorstore(cfg.index_dir, cfg.collection_name)
+    kk = k or cfg.k
+    # Chroma supports 'filter' for metadata filtering
+    if filt:
+        docs = vs.similarity_search(query, k=kk, filter=filt)
+    else:
+        docs = vs.similarity_search(query, k=kk)
     results = []
     for d in docs:
         results.append({
@@ -48,4 +60,3 @@ def format_context(snippets: List[Dict[str, Any]]) -> str:
         src = s.get("source") or s.get("doc_id") or "unknown"
         lines.append(f"[{i}] ({src})\n{s.get('text','').strip()}")
     return "\n\n".join(lines)
-
