@@ -18,9 +18,12 @@ Minimal retrieval-augmented generation (RAG) app:
 
 ## Setup
 
-1) Install deps
+1) Create venv and activate
+    - `uv venv`
+    - `.venv\Scripts\activate`
+2) Install deps
     - `uv sync`
-2) Configure environment
+3) Configure environment
     - Copy `.env.example` to `.env` and fill values
     - Ensure processed JSON files exist in `data/processed/`
     - Optionally: To reprocess files, place PDFs in `documents/` and run ingest.py
@@ -116,8 +119,12 @@ The indexer will also add `doc_id` from the filename.
 This is a personal note on the state of the project.
 
 I chose to use docling to extract the metadata contained in the table fields. This worked well, but some of the fields
-are not consistent across documents (product identification number). Consequently I chose a broad search approach
-relying to where conditions and post-processing.
+are not consistent across documents (product identification number). Consequently, I chose a broad search approach
+relying on `where` conditions and post-processing.
+
+My working time is recorded and shown in `TogglTrack_Report_Detailed_report__from_15_09_2025_to_21_09_2025_.pdf`.
+
+I understood this to be a timed exercise, thus I spent less than the provided 4 hours. As a consequence, not all evaluation questions work.
 
 Evaluation questions:
 
@@ -130,9 +137,9 @@ Evaluation questions:
 - Welche Leuchte hat die primäre Erzeugnisnummer 4062172212311?
     - answers correctly
 
-Problems and extensions:
+Problems and Extensions:
 
-- Numerical metadata should be evaluated properly to enable numerical filtering. 
+- Numerical metadata should be evaluated fully to enable numerical filtering. This will require more extensive parsing and data model structuring before building the index.
 - Answers depend strongly on temperature and model choice due to the need for the AI to come up with the right filters. Prompt optimization may mitigate this.
 - Parts of the implementation rely on `global` variables, which should be avoided when deploying as API.
 
@@ -142,6 +149,8 @@ To scale this application:
 
 - The vector store needs be moved to a self/cloud hosted vector database, f.e. Qdrant.
 - The rag tool needs to make use of a connector to the vector db.
+- should the app be deployed as API, the implementation needs to handle concurrent requests and thus needs to be async
+- lastly, the API can be deployed as a container and set to scale based on the number of requests or resource usage, or alternatively the processes can be executed completely serverless via lambda
 
 Additional scaling considerations:
 
