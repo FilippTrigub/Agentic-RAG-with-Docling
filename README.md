@@ -122,21 +122,6 @@ I chose to use docling to extract the metadata contained in the table fields. Th
 are not consistent across documents (product identification number). Consequently, I chose a broad search approach
 relying on `where` conditions and post-processing.
 
-My working time is recorded and shown in `TogglTrack_Report_Detailed_report__from_15_09_2025_to_21_09_2025_.pdf`.
-
-I understood this to be a timed exercise, thus I spent less than the provided 4 hours. As a consequence, not all evaluation questions work.
-
-Evaluation questions:
-
-- Was ist die Farbtemperatur von SIRIUS HRI 330W 2/CS 1/SKU?
-    - answered correctly
-- Welche Leuchten sind gut für die Ausstattung im Operationssaal geeignet?
-    - answered ok (no binary evaluation possible)
-- Gebe mir alle Leuchtmittel mit mindestens 1000 Watt und Lebensdauer von mehr als 400 Stunden?
-    - does not answer fully, due to a lack of numerical metadata filtering (`$gt`, `$lt`)
-- Welche Leuchte hat die primäre Erzeugnisnummer 4062172212311?
-    - answers correctly
-
 Problems and Extensions:
 
 - Numerical metadata should be evaluated fully to enable numerical filtering. This will require more extensive parsing and data model structuring before building the index.
