@@ -9,6 +9,10 @@ from langchain_core.documents import Document
 from langchain_community.document_loaders import JSONLoader
 from langchain_community.vectorstores import Chroma
 from langchain_google_genai.embeddings import GoogleGenerativeAIEmbeddings
+from rich.console import Console
+from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn, TaskProgressColumn
+
+console = Console()
 
 
 def _iter_json_files(processed_dir: Path) -> Iterable[Path]:
@@ -64,44 +68,61 @@ def _flatten_for_metadata(record: Dict[str, Any], path: Path) -> Dict[str, Any]:
 
 def _load_documents(processed_dir: Path) -> List[Document]:
     docs: List[Document] = []
-    for p in _iter_json_files(processed_dir):
-        try:
-            # Validate JSON first to fail fast with helpful errors
-            json.loads(p.read_text(encoding="utf-8"))
-        except Exception:
-            continue
-        loader = JSONLoader(
-            file_path=str(p),
-            jq_schema=".",            # load the entire JSON object
-            content_key="content",     # use 'content' field as page_content
-            text_content=False,
-            metadata_func=(lambda rec, _metadata=None, _p=p: _flatten_for_metadata(rec, _p)),
-        )
-        try:
-            loaded = loader.load()
-        except Exception:
-            # Fallback to manual if loader fails for any reason
+    json_files = list(_iter_json_files(processed_dir))
+    
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        BarColumn(),
+        TaskProgressColumn(),
+        console=console
+    ) as progress:
+        task = progress.add_task("📄 [cyan]Loading documents...", total=len(json_files))
+        
+        for p in json_files:
             try:
-                data = json.loads(p.read_text(encoding="utf-8"))
-                content = (data.get("content") or "").strip()
-                if not content:
-                    continue
-                docs.append(
-                    Document(
-                        page_content=content,
-                        metadata={
-                            "source": str(p),
-                            "doc_id": p.stem,
-                        },
-                    )
-                )
-                continue
+                # Validate JSON first to fail fast with helpful errors
+                json.loads(p.read_text(encoding="utf-8"))
             except Exception:
+                progress.advance(task)
                 continue
-        # Expect one document per JSON file
-        for d in loaded:
-            if d.page_content and d.page_content.strip():
-                docs.append(d)
+            loader = JSONLoader(
+                file_path=str(p),
+                jq_schema=".",            # load the entire JSON object
+                content_key="content",     # use 'content' field as page_content
+                text_content=False,
+                metadata_func=(lambda rec, _metadata=None, _p=p: _flatten_for_metadata(rec, _p)),
+            )
+            try:
+                loaded = loader.load()
+            except Exception:
+                # Fallback to manual if loader fails for any reason
+                try:
+                    data = json.loads(p.read_text(encoding="utf-8"))
+                    content = (data.get("content") or "").strip()
+                    if not content:
+                        progress.advance(task)
+                        continue
+                    docs.append(
+                        Document(
+                            page_content=content,
+                            metadata={
+                                "source": str(p),
+                                "doc_id": p.stem,
+                            },
+                        )
+                    )
+                    progress.advance(task)
+                    continue
+                except Exception:
+                    progress.advance(task)
+                    continue
+            # Expect one document per JSON file
+            for d in loaded:
+                if d.page_content and d.page_content.strip():
+                    docs.append(d)
+            progress.advance(task)
+    
     return docs
 
 
@@ -120,17 +141,34 @@ def build_index(
 
     docs = _load_documents(processed_dir)
     if not docs:
+        console.print("⚠️  [yellow]No documents found to index![/yellow]")
         return 0
 
-    emb = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001")
-    vs = Chroma(
-        collection_name=collection_name,
-        persist_directory=str(index_dir),
-        embedding_function=emb,
-    )
-
-    vs.add_documents(docs)
-    vs.persist()
+    console.print(f"✨ [green]Loaded {len(docs)} documents[/green]")
+    
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        console=console
+    ) as progress:
+        task = progress.add_task("🔮 [cyan]Creating embeddings...", total=None)
+        
+        emb = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001")
+        vs = Chroma(
+            collection_name=collection_name,
+            persist_directory=str(index_dir),
+            embedding_function=emb,
+        )
+        
+        progress.update(task, description="💾 [cyan]Adding documents to vector store...")
+        vs.add_documents(docs)
+        
+        progress.update(task, description="💿 [cyan]Persisting index...")
+        vs.persist()
+        
+        progress.update(task, completed=True)
+    
+    console.print(f"🎊 [bold green]Index built successfully![/bold green]")
     return len(docs)
 
 
@@ -149,11 +187,11 @@ def load_vectorstore(
 if __name__ == "__main__":
     import argparse
 
-    ap = argparse.ArgumentParser(description="Build Chroma index from processed JSON")
+    ap = argparse.ArgumentParser(description="📚 Build Chroma index from processed JSON")
     ap.add_argument("--processed-dir", type=Path, default=Path("data/processed"))
     ap.add_argument("--index-dir", type=Path, default=Path("data/index/chroma"))
     ap.add_argument("--collection", type=str, default="rag_mvp")
     args = ap.parse_args()
 
     n = build_index(args.processed_dir, args.index_dir, args.collection)
-    print(f"Indexed {n} documents into {args.index_dir}")
+    console.print(f"✅ [bold green]Indexed {n} documents into {args.index_dir}[/bold green]")

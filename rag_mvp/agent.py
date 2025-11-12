@@ -6,6 +6,11 @@ from pathlib import Path
 from typing import List, Optional, Dict, Any
 
 from langchain_cerebras import ChatCerebras
+from rich.console import Console
+from rich.panel import Panel
+from rich.table import Table
+from rich.text import Text
+from rich.markdown import Markdown
 
 from langchain.agents import create_tool_calling_agent, AgentExecutor
 from langchain.tools import StructuredTool
@@ -14,6 +19,8 @@ from langchain_core.pydantic_v1 import BaseModel, Field
 from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 
 from .tools import RetrieverConfig, retrieve_context
+
+console = Console()
 
 
 # Store meta about the last tool call for UX printing
@@ -121,12 +128,14 @@ class Memory:
 
 def run_chat(index_dir: str = "data/index/chroma", collection: str = "rag_mvp") -> None:
     # Init LLM (requires CEREBRAS_API_KEY)
+    console.print("🧠 [cyan]Loading AI model...[/cyan]")
     llm = ChatCerebras(model="gpt-oss-120b")
 
     mem = Memory()
     retriever_cfg = RetrieverConfig(index_dir=Path(index_dir), collection_name=collection)
 
     # Build tool and agentic RAG
+    console.print("🔧 [cyan]Setting up retrieval tools...[/cyan]")
     tool = make_retrieve_tool(retriever_cfg)
     tools = [tool]
 
@@ -147,17 +156,31 @@ def run_chat(index_dir: str = "data/index/chroma", collection: str = "rag_mvp") 
         verbose=True,
     )
 
-    print("Type 'exit' to quit. Ask a question:")
+    # Welcome message
+    welcome_panel = Panel(
+        "[bold green]Welcome to the Funky RAG Chat! 🎉[/bold green]\n\n"
+        "💡 Ask me anything about your product specs!\n"
+        "🔍 I'll search through the documents to find answers\n"
+        "✨ Type [bold yellow]'exit'[/bold yellow] or [bold yellow]'quit'[/bold yellow] to leave\n",
+        title="[bold cyan]🤖 Chat Agent Ready[/bold cyan]",
+        border_style="cyan",
+        padding=(1, 2)
+    )
+    console.print(welcome_panel)
+
     while True:
         try:
-            q = input("> ").strip()
+            console.print("\n[bold magenta]You[/bold magenta] 💬 ", end="")
+            q = input().strip()
         except EOFError:
             break
         if not q:
             continue
         if q.lower() in {"exit", "quit"}:
+            console.print("\n👋 [bold yellow]Thanks for chatting! See you next time![/bold yellow] ✨\n")
             break
 
+        console.print("\n🔎 [dim]Searching documents...[/dim]")
         inputs = {"input": q, "chat_history": mem.as_messages()}
         result = executor.invoke(inputs)
         answer = result.get("output", "")
@@ -165,15 +188,32 @@ def run_chat(index_dir: str = "data/index/chroma", collection: str = "rag_mvp") 
         # Augment output with tool usage and sources
         snippets = LAST_TOOL_CALL.get("snippets", [])
         hits = len(snippets)
-        print(f"\n[Tool] retrieve_context used; hits={hits}")
-        print("\n" + answer + "\n")
+        
+        # Display answer in a nice panel
+        answer_panel = Panel(
+            Markdown(answer),
+            title=f"[bold green]🤖 Assistant[/bold green] [dim](Found {hits} relevant docs)[/dim]",
+            border_style="green",
+            padding=(1, 2)
+        )
+        console.print(answer_panel)
+
+        # Display sources in a table
         if hits:
-            src_lines = []
+            sources_table = Table(
+                title="📚 Sources",
+                show_header=True,
+                header_style="bold cyan",
+                border_style="blue"
+            )
+            sources_table.add_column("#", style="yellow", width=4)
+            sources_table.add_column("Document", style="cyan")
+            
             for i, s in enumerate(snippets, start=1):
                 src = s.get("source") or s.get("doc_id") or "unknown"
-                src_lines.append(f"[{i}] {src}")
-            print("Sources:\n" + "\n".join(src_lines))
-            print(f"Hits: {hits}\n")
+                sources_table.add_row(f"[{i}]", src)
+            
+            console.print(sources_table)
 
         # Update memory
         mem.add_user(q)

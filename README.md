@@ -1,5 +1,7 @@
 # Agentic RAG MVP: Docling + LangChain + Chroma
 
+> 🎨 **Now with Funky Features!** Beautiful CLI with colors, emojis, progress bars, and styled output! ✨
+
 Minimal retrieval-augmented generation (RAG) app:
 
 1. Documents are parsed via Docling to JSON
@@ -10,6 +12,7 @@ Minimal retrieval-augmented generation (RAG) app:
 6. Agent can use exact filters, where conditions applicable on document content and contains post-retrieval filters for
    broad search
 7. Agent has basic memory
+8. **NEW!** 🎉 Funky terminal UI with ASCII art, colors, emojis, and progress bars!
 
 ## Prerequisites
 
@@ -152,8 +155,28 @@ Additional scaling considerations:
 - `data/processed/` — input JSONs
 - `data/index/chroma/` — Chroma persistence
 
+## 🎨 Funky Features
+
+The CLI now includes beautiful visual enhancements:
+
+- **ASCII Art Banner** - Eye-catching header on every run
+- **Colorful Output** - Color-coded messages (cyan, green, yellow, magenta)
+- **Emojis** - Fun icons throughout (🚀 📚 💬 🤖 🔍 ✨)
+- **Progress Bars** - Animated progress indicators with spinners
+- **Styled Panels** - Beautiful bordered boxes for important info
+- **Tables** - Clean, formatted tables for sources
+- **Enhanced Chat** - Styled prompts, responses, and source displays
+
+### Try the Demo
+```bash
+python3 test_funky.py
+```
+
+See `FUNKY_FEATURES.md` and `BEFORE_AND_AFTER.md` for details!
+
 ## Troubleshooting
 
 - Missing embeddings: ensure `GOOGLE_API_KEY` is set
 - Cerebras auth: ensure `CEREBRAS_API_KEY` is set
 - No results: confirm `data/processed/` has JSON with non-empty `content`
+- Colors not showing: Check terminal supports 256 colors and ANSI codes
