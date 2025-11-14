@@ -1,159 +1,136 @@
 # Agentic RAG MVP: Docling + LangChain + Chroma
 
-Minimal retrieval-augmented generation (RAG) app:
+This project is a minimal Retrieval-Augmented Generation (RAG) application that demonstrates how to build a chat agent that can answer questions based on a knowledge base of documents.
 
-1. Documents are parsed via Docling to JSON
-2. Content is embedded with Google Generative AI embeddings & metadata evaluate and made searchable via where filters
-3. Embedded docs are stored locally in Chroma
-4. User can query with a simple chat agent that has a RAG tool
-5. Agent can reuse RAG tool to search iteratively
-6. Agent can use exact filters, where conditions applicable on document content and contains post-retrieval filters for
-   broad search
-7. Agent has basic memory
+## Features
+
+-   **Document Processing:** Parses documents using Docling to extract content and metadata.
+-   **Vector Embeddings:** Creates vector embeddings of the document content using Google Generative AI.
+-   **Vector Store:** Stores the embedded documents in a local ChromaDB vector store.
+-   **Chat Agent:** Provides a simple chat agent that uses a RAG tool to query the knowledge base.
+-   **Iterative Search:** The agent can use the RAG tool to perform iterative searches and refine its answers.
+-   **Metadata Filtering:** The agent can filter searches based on document metadata.
+-   **Basic Memory:** The agent has basic memory to maintain context during a conversation.
+
+## How it Works
+
+The application follows a simple workflow:
+
+```
+┌───────────────────┐      ┌───────────────────┐      ┌───────────────────┐
+│   PDF Documents   │ ───> │      Docling      │ ───> │  Processed JSON   │
+└───────────────────┘      └───────────────────┘      └───────────────────┘
+                                                            │
+                                                            ▼
+┌───────────────────┐      ┌───────────────────┐      ┌───────────────────┐
+│   ChromaDB Index  │ <─── │ Google Generative │ <─── │      Content      │
+└───────────────────┘      │        AI         │      └───────────────────┘
+        │                  └───────────────────┘
+        ▼
+┌───────────────────┐      ┌───────────────────┐
+│    Chat Agent     │ <─── │     RAG Tool      │
+└───────────────────┘      └───────────────────┘
+```
+
+1.  **Ingestion:** PDF documents are placed in the `documents/` directory. The `ingest.py` script uses Docling to parse the PDFs and extract their content and metadata into JSON files in the `data/processed/` directory.
+2.  **Indexing:** The `rag_mvp/index_json.py` script reads the processed JSON files, generates embeddings for the content using the Google Generative AI API, and stores the embeddings and metadata in a ChromaDB index located in the `data/index/chroma/` directory.
+3.  **Chat:** The `rag_mvp/agent.py` script starts a chat agent that has access to a RAG tool. The agent can use this tool to search the ChromaDB index for relevant documents and use them to answer user questions.
 
 ## Prerequisites
 
-- Python 3.13 (repo uses `uv` for dependency management)
-- Accounts/keys: Google Generative AI, Cerebras
+-   Python 3.13 or higher
+-   `uv` for dependency management
+-   A Google Generative AI API key
+-   A Cerebras API key
 
-## Setup
+## Getting Started
 
-1) Create venv and activate
-    - `uv venv`
-    - `.venv\Scripts\activate`
-2) Install deps
-    - `uv sync`
-3) Configure environment
-    - Copy `.env.example` to `.env` and fill values
-    - Ensure processed JSON files exist in `data/processed/`
-    - Optionally: To reprocess files, place PDFs in `documents/` and run ingest.py
+1.  **Clone the repository:**
 
-## Data Format (processed JSON)
+    ```bash
+    git clone https://github.com/your-username/your-repository.git
+    cd your-repository
+    ```
 
-Each file in `data/processed/` contains:
+2.  **Create a virtual environment and install dependencies:**
 
-```json
-{
-  "source": "string",
-  "content": "string",
-  "Product features and benefits": [
-    "feature 1",
-    "feature 2"
-  ],
-  "Areas of application": [
-    "area 1",
-    "area 2"
-  ],
-  "General Product Information": {
-    "Product number (Americas)": "",
-    "Product name (Americas)": "",
-    "Family brand": "",
-    "ANSI code": ""
-  },
-  "Electrical Data": {
-    "Nominal wattage": ""
-  },
-  "Photometric Data": {
-    "Nominal luminous flux": "",
-    "Useful luminous flux ( Φ use)": "",
-    "Φ use value refers to luminous flux": "",
-    "Illuminated field": "",
-    "Color temperature": "",
-    "Correlated color temperature CCT": "",
-    "Chromaticity coordinate x": "",
-    "Chromaticity coordinate y": "",
-    "Color rendering index Ra": ""
-  },
-  "Physical Attributes & Dimensions": {
-    "Lamp base": ""
-  },
-  "Product datasheet": {
-    "Diameter": "",
-    "Length": ""
-  },
-  "Operating Conditions": {
-    "Burning position": ""
-  },
-  "Environmental & Regulatory Information": {
-    "Primary article identifier": "",
-    "Energy efficiency class": "",
-    "Declaration no. in SCIP database": ""
-  }
-}
-```
+    ```bash
+    uv venv
+    source .venv/bin/activate  # On Windows, use `.venv\Scripts\activate`
+    uv sync
+    ```
 
-The indexer will also add `doc_id` from the filename.
+3.  **Configure your environment:**
 
-## Build the Index
+    -   Copy the `.env.example` file to `.env`:
 
-- `uv run python -m rag_mvp.index_json --processed-dir data/processed --index-dir data/index/chroma`
-- Output persists to `data/index/chroma`.
-- The document metadata transforms all maps into lists of strings containing the values as concatenated strings, for
-  example:
+        ```bash
+        cp .env.example .env
+        ```
 
-```json
-{
-  "areas_of_application": "Stage & Theatre | Studio, TV, & Film | Professional Photography | Club & Disco",
-  "doc_id": "ZMP_1004795",
-  "electrical_data": "Nominal wattage: 500W | Nominal voltage: 240 V",
-  "environmental_regulatory_information": "Primary article identifier: 4008321099846 | 4052899015524 | Energy efficiency class: G | Declaration no. in SCIP database: No declarable substances contained | Candidate list substance 1: No declarable substances contained",
-  "general_product_information": "ANSI code: FRJ | LIF code: CP/82 | Global order reference: 64674",
-  "operating_conditions": "Burning position: Any | Dimmable: Yes | Nominal lifetime: 200 hr",
-  "photometric_data": "Nominal luminous flux: 13500 lm | Useful luminous flux ( Φ use): 12240 lm | Φ use value refers to luminous flux: 360 | Luminous efficacy: 27 lm/W | Illuminated field: 8.0*18 mm² | Color temperature: 3200 K | Correlated color temperature CCT: 3193 K | Chromaticity coordinate x: 0.425 | Chromaticity coordinate y: 0.401 | Color rendering index Ra: 100 | Light center length (LCL): 46.5mm",
-  "physical_attributes_dimensions": "Lamp base: GY9.5 | Diameter: 18.0mm | Length: 80.0mm | Product weight: 18.80 g",
-  "product_features_and_benefits": "Robust construction for reliable, lasting performance | Consistent color over the life of the lamps | Instant on and nearly constant luminous flux over the life of the lamp | Broad product portfolio supporting the stage and studio markets | Dimmable to 0% with traditional amber shift",
-  "source": "documents\\ZMP_1004795.pdf"
-}
-```
+    -   Open the `.env` file and add your Google Generative AI and Cerebras API keys:
 
-## Run the Chat Agent
+        ```
+        GOOGLE_API_KEY="your-google-api-key"
+        CEREBRAS_API_KEY="your-cerebras-api-key"
+        ```
 
-- `uv run python -m rag_mvp.agent chat --index-dir data/index/chroma`
-- Type a question; the agent retrieves top-k chunks and answers with brief citations like `[1]`.
-- The agent is capable of using the rag iteratively.
-- The agent can use the rag tool to filter the search via substrings.
--
+4.  **Add your documents:**
 
-## Comment & Evaluation
+    Place your PDF documents in the `documents/` directory.
 
-This is a personal note on the state of the project.
+5.  **Ingest the documents:**
 
-I chose to use docling to extract the metadata contained in the table fields. This worked well, but some of the fields
-are not consistent across documents (product identification number). Consequently, I chose a broad search approach
-relying on `where` conditions and post-processing.
+    ```bash
+    uv run python -m ingest
+    ```
 
-Problems and Extensions:
+    This will create processed JSON files in the `data/processed/` directory.
 
-- Numerical metadata should be evaluated fully to enable numerical filtering. This will require more extensive parsing and data model structuring before building the index.
-- Answers depend strongly on temperature and model choice due to the need for the AI to come up with the right filters. Prompt optimization may mitigate this.
-- Parts of the implementation rely on `global` variables, which should be avoided when deploying as API.
+6.  **Build the index:**
 
-## Scaling
+    ```bash
+    uv run python main.py index
+    ```
 
-To scale this application:
+    This will create a ChromaDB index in the `data/index/chroma/` directory.
 
-- The vector store needs be moved to a self/cloud hosted vector database, f.e. Qdrant.
-- The rag tool needs to make use of a connector to the vector db.
-- should the app be deployed as API, the implementation needs to handle concurrent requests and thus needs to be async
-- lastly, the API can be deployed as a container and set to scale based on the number of requests or resource usage, or alternatively the processes can be executed completely serverless via lambda
+7.  **Start the chat agent:**
 
-Additional scaling considerations:
+    ```bash
+    uv run python main.py chat
+    ```
 
-- Exhaustive search will not be possible for a large number of documents. Queries such as "Give me all" may result in
-  exhaustion of context limits and will contribute to high costs.
-- Other filters may also yield too many documents. Hard limits will degrade performance. A better approach is post-retrieval processing and more refined tooling.
+    You can now start asking questions to the chat agent.
 
-## Project Layout
+## Project Structure
 
-- `main.py` — ingestion from PDFs to JSON (Docling)
-- `rag_mvp/index_json.py` — build Chroma index from processed JSON
-- `rag_mvp/tools.py` — retrieval helper + context formatting
-- `rag_mvp/agent.py` — minimal chat agent with memory
-- `data/processed/` — input JSONs
-- `data/index/chroma/` — Chroma persistence
+-   `ingest.py`: Ingestion script to process PDFs with Docling.
+-   `main.py`: Main entry point for the application, providing a CLI to build the index and run the chat agent.
+-   `rag_mvp/index_json.py`: Script to build the ChromaDB index from processed JSON files.
+-   `rag_mvp/tools.py`: Contains the RAG tool and other helper functions.
+-   `rag_mvp/agent.py`: The chat agent implementation.
+-   `data/processed/`: Directory for the processed JSON files.
+-   `data/index/chroma/`: Directory for the ChromaDB index.
+-   `documents/`: Directory for your PDF documents.
+
+## Scaling and Future Work
+
+### Scaling
+
+-   **Vector Store:** For larger datasets, move the vector store to a self-hosted or cloud-hosted solution like Qdrant or Pinecone.
+-   **API Deployment:** Deploy the application as an API to handle concurrent requests. This will require making the implementation asynchronous.
+-   **Serverless:** For a more scalable and cost-effective solution, deploy the application as serverless functions (e.g., AWS Lambda).
+
+### Future Work
+
+-   **Numerical Metadata Filtering:** Extend the data model and parsing to enable numerical filtering on metadata.
+-   **Prompt Optimization:** Optimize the prompts to improve the agent's ability to generate the correct filters.
+-   **Refactor Global Variables:** Remove the use of global variables to make the code more modular and easier to deploy as an API.
+-   **Advanced RAG Techniques:** Implement more advanced RAG techniques like post-retrieval processing and more refined tooling.
 
 ## Troubleshooting
 
-- Missing embeddings: ensure `GOOGLE_API_KEY` is set
-- Cerebras auth: ensure `CEREBRAS_API_KEY` is set
-- No results: confirm `data/processed/` has JSON with non-empty `content`
+-   **Missing Embeddings:** Ensure that your `GOOGLE_API_KEY` is set correctly in the `.env` file.
+-   **Cerebras Authentication Errors:** Ensure that your `CEREBRAS_API_KEY` is set correctly in the `.env` file.
+-   **No Results:** Make sure that you have run the ingestion and indexing steps and that the `data/processed/` directory contains JSON files with non-empty `content` fields.
