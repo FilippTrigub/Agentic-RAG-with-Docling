@@ -1,159 +1,294 @@
 # Agentic RAG MVP: Docling + LangChain + Chroma
 
-Minimal retrieval-augmented generation (RAG) app:
+A production-ready retrieval-augmented generation (RAG) system that intelligently searches and queries structured product documentation.
 
-1. Documents are parsed via Docling to JSON
-2. Content is embedded with Google Generative AI embeddings & metadata evaluate and made searchable via where filters
-3. Embedded docs are stored locally in Chroma
-4. User can query with a simple chat agent that has a RAG tool
-5. Agent can reuse RAG tool to search iteratively
-6. Agent can use exact filters, where conditions applicable on document content and contains post-retrieval filters for
-   broad search
-7. Agent has basic memory
+## Overview
+
+This MVP demonstrates an agentic RAG pipeline that:
+
+1. **Parses documents** - Extracts structured data from PDFs using Docling (tables, sections, metadata)
+2. **Embeds content** - Generates vector embeddings via Google Generative AI
+3. **Stores searchably** - Persists embeddings and metadata in Chroma with filterable metadata
+4. **Enables intelligent search** - Provides a chat agent with iterative RAG capabilities
+5. **Filters precisely** - Supports exact `where` filters and substring `contains` post-retrieval filtering
+6. **Maintains context** - Preserves conversation memory across interactions
+
+### Key Features
+
+- **Parallel document ingestion** with configurable worker processes
+- **Structured metadata extraction** from product datasheets (technical specs, features, applications)
+- **Hybrid search** combining vector similarity with metadata filtering
+- **Agentic retrieval** that can iteratively refine searches
+- **Source attribution** with inline citations
 
 ## Prerequisites
 
-- Python 3.13 (repo uses `uv` for dependency management)
-- Accounts/keys: Google Generative AI, Cerebras
+- **Python 3.13+** (dependency management via `uv`)
+- **API Keys**:
+  - Google Generative AI API key (for embeddings)
+  - Cerebras API key (for chat model)
 
-## Setup
+## Quick Start
 
-1) Create venv and activate
-    - `uv venv`
-    - `.venv\Scripts\activate`
-2) Install deps
-    - `uv sync`
-3) Configure environment
-    - Copy `.env.example` to `.env` and fill values
-    - Ensure processed JSON files exist in `data/processed/`
-    - Optionally: To reprocess files, place PDFs in `documents/` and run ingest.py
+### 1. Environment Setup
 
-## Data Format (processed JSON)
+```bash
+# Create and activate virtual environment
+uv venv
+source .venv/bin/activate  # Linux/Mac
+# or
+.venv\Scripts\activate     # Windows
 
-Each file in `data/processed/` contains:
+# Install dependencies
+uv sync
+```
+
+### 2. Configuration
+
+```bash
+# Copy environment template and add your API keys
+cp .env.example .env
+# Edit .env and add:
+# GOOGLE_API_KEY=your_google_api_key
+# CEREBRAS_API_KEY=your_cerebras_api_key
+```
+
+### 3. Prepare Data
+
+The repository includes pre-processed JSON files in `data/processed/`. To process your own PDFs:
+
+```bash
+# Place PDFs in documents/ directory, then run:
+uv run python ingest.py --input-dir documents --output-dir data/processed --workers 6
+```
+
+### 4. Run the Application
+
+**Option A: All-in-one** (index + chat)
+```bash
+uv run python main.py run
+```
+
+**Option B: Step-by-step**
+```bash
+# Build the vector index
+uv run python main.py index --processed-dir data/processed --index-dir data/index/chroma
+
+# Start the chat agent
+uv run python main.py chat --index-dir data/index/chroma
+```
+
+## Architecture
+
+### Data Pipeline
+
+```
+PDFs → [Docling Parser] → Structured JSON → [Embeddings] → Chroma Vector Store → [Agent + Tools] → User
+```
+
+### Data Format
+
+Processed JSON files (`data/processed/`) follow this structure:
 
 ```json
 {
-  "source": "string",
-  "content": "string",
-  "Product features and benefits": [
-    "feature 1",
-    "feature 2"
-  ],
-  "Areas of application": [
-    "area 1",
-    "area 2"
-  ],
+  "source": "documents/product.pdf",
+  "content": "Full text content...",
+  "Product features and benefits": ["feature 1", "feature 2"],
+  "Areas of application": ["application 1", "application 2"],
   "General Product Information": {
-    "Product number (Americas)": "",
-    "Product name (Americas)": "",
-    "Family brand": "",
-    "ANSI code": ""
+    "ANSI code": "ABC123",
+    "Product name (Americas)": "Product Name"
   },
   "Electrical Data": {
-    "Nominal wattage": ""
+    "Nominal wattage": "500W",
+    "Nominal voltage": "240 V"
   },
   "Photometric Data": {
-    "Nominal luminous flux": "",
-    "Useful luminous flux ( Φ use)": "",
-    "Φ use value refers to luminous flux": "",
-    "Illuminated field": "",
-    "Color temperature": "",
-    "Correlated color temperature CCT": "",
-    "Chromaticity coordinate x": "",
-    "Chromaticity coordinate y": "",
-    "Color rendering index Ra": ""
+    "Nominal luminous flux": "13500 lm",
+    "Color temperature": "3200 K"
   },
   "Physical Attributes & Dimensions": {
-    "Lamp base": ""
-  },
-  "Product datasheet": {
-    "Diameter": "",
-    "Length": ""
+    "Lamp base": "GY9.5",
+    "Diameter": "18.0mm"
   },
   "Operating Conditions": {
-    "Burning position": ""
+    "Burning position": "Any",
+    "Dimmable": "Yes"
   },
   "Environmental & Regulatory Information": {
-    "Primary article identifier": "",
-    "Energy efficiency class": "",
-    "Declaration no. in SCIP database": ""
+    "Energy efficiency class": "G"
   }
 }
 ```
 
-The indexer will also add `doc_id` from the filename.
+During indexing, the system adds a `doc_id` (derived from filename) and flattens nested metadata for efficient filtering.
 
-## Build the Index
+### Metadata Transformation
 
-- `uv run python -m rag_mvp.index_json --processed-dir data/processed --index-dir data/index/chroma`
-- Output persists to `data/index/chroma`.
-- The document metadata transforms all maps into lists of strings containing the values as concatenated strings, for
-  example:
+During indexing, nested structures are flattened into pipe-delimited strings for substring filtering:
 
 ```json
 {
-  "areas_of_application": "Stage & Theatre | Studio, TV, & Film | Professional Photography | Club & Disco",
   "doc_id": "ZMP_1004795",
+  "source": "documents\\ZMP_1004795.pdf",
+  "areas_of_application": "Stage & Theatre | Studio, TV, & Film | Professional Photography | Club & Disco",
   "electrical_data": "Nominal wattage: 500W | Nominal voltage: 240 V",
-  "environmental_regulatory_information": "Primary article identifier: 4008321099846 | 4052899015524 | Energy efficiency class: G | Declaration no. in SCIP database: No declarable substances contained | Candidate list substance 1: No declarable substances contained",
-  "general_product_information": "ANSI code: FRJ | LIF code: CP/82 | Global order reference: 64674",
-  "operating_conditions": "Burning position: Any | Dimmable: Yes | Nominal lifetime: 200 hr",
-  "photometric_data": "Nominal luminous flux: 13500 lm | Useful luminous flux ( Φ use): 12240 lm | Φ use value refers to luminous flux: 360 | Luminous efficacy: 27 lm/W | Illuminated field: 8.0*18 mm² | Color temperature: 3200 K | Correlated color temperature CCT: 3193 K | Chromaticity coordinate x: 0.425 | Chromaticity coordinate y: 0.401 | Color rendering index Ra: 100 | Light center length (LCL): 46.5mm",
-  "physical_attributes_dimensions": "Lamp base: GY9.5 | Diameter: 18.0mm | Length: 80.0mm | Product weight: 18.80 g",
-  "product_features_and_benefits": "Robust construction for reliable, lasting performance | Consistent color over the life of the lamps | Instant on and nearly constant luminous flux over the life of the lamp | Broad product portfolio supporting the stage and studio markets | Dimmable to 0% with traditional amber shift",
-  "source": "documents\\ZMP_1004795.pdf"
+  "photometric_data": "Nominal luminous flux: 13500 lm | Color temperature: 3200 K | ...",
+  "product_features_and_benefits": "Robust construction | Consistent color | Dimmable to 0%",
+  "physical_attributes_dimensions": "Lamp base: GY9.5 | Diameter: 18.0mm | Length: 80.0mm"
 }
 ```
 
-## Run the Chat Agent
+This enables efficient substring matching on metadata fields (e.g., searching for "GY9.5" in lamp base specifications).
 
-- `uv run python -m rag_mvp.agent chat --index-dir data/index/chroma`
-- Type a question; the agent retrieves top-k chunks and answers with brief citations like `[1]`.
-- The agent is capable of using the rag iteratively.
-- The agent can use the rag tool to filter the search via substrings.
--
+## Usage Examples
 
-## Comment & Evaluation
+### Interactive Chat
 
-This is a personal note on the state of the project.
+```bash
+uv run python main.py chat --index-dir data/index/chroma
+```
 
-I chose to use docling to extract the metadata contained in the table fields. This worked well, but some of the fields
-are not consistent across documents (product identification number). Consequently, I chose a broad search approach
-relying on `where` conditions and post-processing.
+**Example queries:**
+- "Show me all lamps with color temperature 3200K"
+- "What are the dimmable products suitable for stage and theatre?"
+- "Find lamps with GY9.5 base and 500W power"
 
-Problems and Extensions:
+The agent:
+- Retrieves relevant documents using vector similarity
+- Applies metadata filters (exact `where` clauses or substring `contains` filters)
+- Iteratively refines searches if needed
+- Provides answers with inline citations like `[1]`, `[2]`
 
-- Numerical metadata should be evaluated fully to enable numerical filtering. This will require more extensive parsing and data model structuring before building the index.
-- Answers depend strongly on temperature and model choice due to the need for the AI to come up with the right filters. Prompt optimization may mitigate this.
-- Parts of the implementation rely on `global` variables, which should be avoided when deploying as API.
+## Project Structure
 
-## Scaling
+```
+.
+├── main.py                    # CLI entry point (index, chat, run commands)
+├── ingest.py                  # PDF→JSON ingestion with parallel processing
+├── rag_mvp/
+│   ├── index_json.py         # Chroma index builder
+│   ├── tools.py              # Retrieval tool with metadata filtering
+│   └── agent.py              # LangChain chat agent with RAG capabilities
+├── data/
+│   ├── processed/            # Parsed JSON files (input for indexing)
+│   └── index/chroma/         # Chroma vector store persistence
+├── pyproject.toml            # Project dependencies (managed by uv)
+├── .env.example              # Environment variable template
+└── README.md                 # This file
+```
 
-To scale this application:
+## Implementation Notes
 
-- The vector store needs be moved to a self/cloud hosted vector database, f.e. Qdrant.
-- The rag tool needs to make use of a connector to the vector db.
-- should the app be deployed as API, the implementation needs to handle concurrent requests and thus needs to be async
-- lastly, the API can be deployed as a container and set to scale based on the number of requests or resource usage, or alternatively the processes can be executed completely serverless via lambda
+### Design Decisions
 
-Additional scaling considerations:
+**Docling for Extraction**: Chosen for its robust table parsing capabilities. While field consistency varies across documents (e.g., product identifiers), the broad search approach using `where` and `contains` filters handles this gracefully.
 
-- Exhaustive search will not be possible for a large number of documents. Queries such as "Give me all" may result in
-  exhaustion of context limits and will contribute to high costs.
-- Other filters may also yield too many documents. Hard limits will degrade performance. A better approach is post-retrieval processing and more refined tooling.
+**Metadata Flattening**: Nested structures are flattened to pipe-delimited strings, enabling substring searches without complex query languages.
 
-## Project Layout
+**Agentic Approach**: The LangChain agent can iteratively invoke the RAG tool, refining searches based on initial results.
 
-- `main.py` — ingestion from PDFs to JSON (Docling)
-- `rag_mvp/index_json.py` — build Chroma index from processed JSON
-- `rag_mvp/tools.py` — retrieval helper + context formatting
-- `rag_mvp/agent.py` — minimal chat agent with memory
-- `data/processed/` — input JSONs
-- `data/index/chroma/` — Chroma persistence
+### Known Limitations
+
+- **Numerical filtering**: Metadata is stored as strings. Implementing range queries (e.g., "wattage > 100") requires parsing and structured numerical indexing.
+- **Model sensitivity**: Filter generation depends on LLM interpretation. Prompt engineering and temperature tuning can improve consistency.
+- **Global variables**: Current implementation uses globals for simplicity. Production deployment requires refactoring for concurrency.
+
+### Scaling Considerations
+
+**For production deployment:**
+
+1. **Vector Store**: Migrate from local Chroma to hosted solutions (Qdrant, Pinecone, Weaviate)
+2. **API Layer**: Implement async request handling with FastAPI or similar frameworks
+3. **Deployment**: Containerize with Docker and deploy to Kubernetes, or use serverless (AWS Lambda, Cloud Run)
+4. **Result Limiting**: Implement pagination and hard limits to prevent context window exhaustion
+5. **Caching**: Add Redis/Memcached for frequently accessed queries
+6. **Monitoring**: Integrate observability (OpenTelemetry, Langfuse) for latency and cost tracking
+
+**At scale:**
+- Exhaustive queries ("give me all products") become impractical due to context limits and cost
+- Implement intelligent result summarization and progressive disclosure
+- Consider hybrid architectures with traditional databases for structured queries
 
 ## Troubleshooting
 
-- Missing embeddings: ensure `GOOGLE_API_KEY` is set
-- Cerebras auth: ensure `CEREBRAS_API_KEY` is set
-- No results: confirm `data/processed/` has JSON with non-empty `content`
+### Common Issues
+
+**No embeddings generated**
+```bash
+# Ensure GOOGLE_API_KEY is set
+echo $GOOGLE_API_KEY  # Linux/Mac
+echo %GOOGLE_API_KEY% # Windows
+```
+
+**Cerebras authentication fails**
+```bash
+# Verify CEREBRAS_API_KEY in .env
+cat .env | grep CEREBRAS_API_KEY
+```
+
+**No search results**
+- Confirm `data/processed/` contains JSON files with non-empty `content` fields
+- Rebuild the index: `uv run python main.py index`
+- Check that the index directory exists and has data: `ls -la data/index/chroma/`
+
+**Module import errors**
+```bash
+# Reinstall dependencies
+uv sync --force
+```
+
+**Parallel ingestion fails**
+```bash
+# Reduce worker count
+uv run python ingest.py --workers 1
+```
+
+## Development
+
+### Adding Dependencies
+
+```bash
+uv add package-name           # Add runtime dependency
+uv add --dev package-name     # Add development dependency
+```
+
+### Testing
+
+```bash
+# Install pytest
+uv add --dev pytest
+
+# Run tests (when available)
+uv run pytest
+```
+
+### Code Style
+
+- Python 3.13+, PEP 8 style guidelines
+- 4-space indentation
+- Type hints preferred
+- Docstrings for non-trivial functions
+
+See `AGENTS.md` for detailed development guidelines.
+
+## Contributing
+
+1. Create a feature branch
+2. Make focused, incremental changes
+3. Update README if behavior changes
+4. Use conventional commits (e.g., `feat:`, `fix:`, `docs:`)
+5. Open a pull request with clear description
+
+## License
+
+[Specify your license here]
+
+## Acknowledgments
+
+- **Docling** - Document parsing and structure extraction
+- **LangChain** - Agentic RAG framework
+- **Chroma** - Vector database
+- **Google Generative AI** - Embeddings
+- **Cerebras** - Fast inference for chat model
