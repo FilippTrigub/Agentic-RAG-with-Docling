@@ -10,6 +10,14 @@ from langchain_community.document_loaders import JSONLoader
 from langchain_community.vectorstores import Chroma
 from langchain_google_genai.embeddings import GoogleGenerativeAIEmbeddings
 
+from rag_mvp.mongo_store import (
+    get_mongo_client,
+    get_mongo_db,
+    get_mongo_collection,
+    insert_documents,
+)
+
+
 
 def _iter_json_files(processed_dir: Path) -> Iterable[Path]:
     yield from processed_dir.glob("*.json")
@@ -131,6 +139,19 @@ def build_index(
 
     vs.add_documents(docs)
     vs.persist()
+
+    # Also index in MongoDB
+    client = get_mongo_client()
+    db = get_mongo_db(client)
+    collection = get_mongo_collection(db, collection_name)
+    mongo_docs = [
+        {"doc_id": doc.metadata["doc_id"], "content": doc.page_content, "metadata": doc.metadata}
+        for doc in docs
+    ]
+    if mongo_docs:
+        insert_documents(collection, mongo_docs)
+    client.close()
+
     return len(docs)
 
 

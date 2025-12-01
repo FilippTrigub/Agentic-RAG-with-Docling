@@ -7,6 +7,8 @@ from typing import List, Dict, Any, Optional
 from langchain_community.vectorstores import Chroma
 from langchain_google_genai.embeddings import GoogleGenerativeAIEmbeddings
 
+from rag_mvp.mongo_store import get_mongo_client, get_mongo_db, get_mongo_collection
+
 
 @dataclass
 class RetrieverConfig:
@@ -38,6 +40,11 @@ def retrieve_context(
         where: Optional[str] = None,
         contains: Optional[Dict[str, str]] = None,
 ) -> List[Dict[str, Any]]:
+    # Set up MongoDB connection
+    client = get_mongo_client()
+    db = get_mongo_db(client)
+    collection = get_mongo_collection(db, cfg.collection_name)
+
     # Use vectorstore directly to support passing filter at query-time
     vs = get_vectorstore(cfg.index_dir, cfg.collection_name)
     kk = k or cfg.k
@@ -68,6 +75,8 @@ def retrieve_context(
             "doc_id": (d.metadata or {}).get("doc_id"),
             "metadata": d.metadata or {},
         })
+
+    client.close()
     return results
 
 
