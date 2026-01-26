@@ -157,3 +157,8 @@ Additional scaling considerations:
 - Missing embeddings: ensure `GOOGLE_API_KEY` is set
 - Cerebras auth: ensure `CEREBRAS_API_KEY` is set
 - No results: confirm `data/processed/` has JSON with non-empty `content`
+
+## Hello World Scripts
+
+- `scripts/hello_python.py` — run with `python scripts/hello_python.py`
+- `scripts/hello_bash.sh` — run with `bash scripts/hello_bash.sh`
