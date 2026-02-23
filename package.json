@@ -1,0 +1,24 @@
+{
+  "name": "sandbox",
+  "version": "1.0.0",
+  "description": "Minimal retrieval-augmented generation (RAG) app:",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FilippTrigub/Agentic-RAG-with-Docling.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FilippTrigub/Agentic-RAG-with-Docling/issues"
+  },
+  "homepage": "https://github.com/FilippTrigub/Agentic-RAG-with-Docling#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
