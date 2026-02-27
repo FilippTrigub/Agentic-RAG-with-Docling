@@ -8,6 +8,7 @@ dependencies = [
     "cerebras-cloud-sdk>=1.50.1",
     "chromadb>=1.0.21",
     "docling>=2.52.0",
+    "flask>=3.0.0",
     "jq>=1.10.0",
     "langchain>=0.3.27",
     "langchain-cerebras>=0.5.0",
